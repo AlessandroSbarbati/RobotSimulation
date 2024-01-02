@@ -1,0 +1,6 @@
+rootProject.name = 'RobotSimulation'
+include 'src:main:model'
+findProject(':src:main:model')?.name = 'model'
+include 'src:model'
+findProject(':src:model')?.name = 'model'
+
