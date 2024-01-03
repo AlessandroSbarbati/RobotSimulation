@@ -1,11 +1,13 @@
 package controller;
 
+import model.Area;
 import model.Robot;
 import utils.RobotCommand;
 
 public class ControllerRobot implements InterfaceControllerRobot {
 
     private Robot robot;
+    private Area robotArea;
 
     public ControllerRobot(Robot robot) {
         this.robot = robot;
@@ -57,19 +59,23 @@ public class ControllerRobot implements InterfaceControllerRobot {
         double y = args[1];
         double speed = args[2];
 
-        if (!robot.isMoving()) {
-            robot.stopMoving();
-            robot.addCondition("Stopped");
+        if (robotArea != null && robotArea.contains(x, y)) {
+            if (!robot.isMoving()) {
+                robot.stopMoving();
+                robot.addCondition("Stopped");
 
-            double distance = Math.sqrt(Math.pow(x - robot.getX(), 2) + Math.pow(y - robot.getY(), 2));
-            double time = distance / speed;
+                double distance = Math.sqrt(Math.pow(x - robot.getX(), 2) + Math.pow(y - robot.getY(), 2));
+                double time = distance / speed;
 
-            simulateMovement(x, y, time);
+                simulateMovement(x, y, time);
 
-            robot.stopMoving();
-            robot.addCondition("Stopped");
+                robot.stopMoving();
+                robot.addCondition("Stopped");
+            } else {
+                System.out.println("Il robot è già in movimento.");
+            }
         } else {
-            System.out.println("Il robot è già in movimento.");
+            System.out.println("La posizione specificata non è contenuta nell'Area del robot.");
         }
     }
 
@@ -100,21 +106,59 @@ public class ControllerRobot implements InterfaceControllerRobot {
     @Override
     public void continueCommand(int seconds) {
         System.out.println("Movimento continua per " + seconds + " secondi");
-        // Puoi utilizzare un timer o un thread per gestire il tempo di continuazione.
+
+        // Creazione di un thread per gestire il tempo di continuazione
+        Thread continueThread = new Thread(() -> {
+            long endTime = System.currentTimeMillis() + seconds * 1000; // Calcola il tempo di fine
+
+            while (System.currentTimeMillis() < endTime) {
+                // Logica da eseguire durante il periodo di continuazione
+                // Ad esempio, puoi aggiungere azioni specifiche che devono essere eseguite durante il movimento continuo.
+                System.out.println("Esecuzione di comandi durante il movimento continuo...");
+
+                try {
+                    Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // Fine del periodo di continuazione
+            System.out.println("Fine del movimento continuo.");
+        });
+
+        // Avvia il thread
+        continueThread.start();
     }
+
 
     @Override
     public void repeatCommand(int iterations) {
         for (int i = 0; i < iterations; i++) {
             System.out.println("Iterazione " + (i + 1));
-            // Aggiungi la logica dei comandi che devono essere ripetuti
+
+            // Aggiungi qui la logica dei comandi che devono essere ripetuti
+            // Ad esempio, puoi richiamare altri metodi del controller per eseguire azioni specifiche.
+
+            try {
+                Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
+
 
     @Override
     public void until(String label) {
         while (!robot.hasCondition(label)) {
             // Aggiungi la logica dei comandi che devono essere ripetuti finché la condizione non è soddisfatta
+            // Ad esempio, potresti aspettare un breve periodo di tempo prima di controllare nuovamente la condizione.
+            try {
+                Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         System.out.println("Condizione " + label + " percepita");
     }
@@ -124,6 +168,12 @@ public class ControllerRobot implements InterfaceControllerRobot {
         while (true) {
             System.out.println("Iterazione infinita");
             // Aggiungi la logica dei comandi che devono essere ripetuti all'infinito
+            // Ad esempio, potresti aspettare un breve periodo di tempo prima di iniziare la prossima iterazione.
+            try {
+                Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -132,9 +182,34 @@ public class ControllerRobot implements InterfaceControllerRobot {
         System.out.println("Fine della sequenza di comandi");
     }
 
+    @Override
+    public void setRobotArea(Area area) {
+        this.robotArea = area;
+    }
+
+    @Override
+    public Area getRobotArea() {
+      return this.robotArea;
+    }
+
     private void simulateMovement(double targetX, double targetY, double time) {
         // Implementa la logica per simulare il movimento del robot per il tempo specificato
         // Puoi utilizzare un timer, un thread o un'altra logica di simulazione a seconda delle tue esigenze.
         // Ad esempio, potresti aggiornare le coordinate del robot in modo incrementale per simulare il movimento.
+
+        double deltaX = (targetX - robot.getX()) / time;
+        double deltaY = (targetY - robot.getY()) / time;
+
+        // Simula il movimento per il tempo specificato
+        for (double elapsed = 0; elapsed < time; elapsed += 0.1) {
+            robot.move(deltaX * 0.1, deltaY * 0.1); // Simula un passo di 0.1 secondi
+            // Puoi regolare il valore 0.1 in base alla frequenza di aggiornamento desiderata.
+            // Assicurati di gestire correttamente la concorrenza se stai utilizzando thread.
+            try {
+                Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

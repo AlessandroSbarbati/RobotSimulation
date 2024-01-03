@@ -82,4 +82,8 @@ public class Robot {
         // Implementa la logica per verificare se il robot ha una determinata condizione
         return condition.contains(checkCondition);
     }
+
+    public double getSpeed() {
+        return speed;
+    }
 }

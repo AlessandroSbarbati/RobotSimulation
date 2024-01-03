@@ -1,5 +1,6 @@
 package controller;
 
+import model.Area;
 import utils.RobotCommand;
 
 public interface InterfaceControllerRobot {
@@ -25,4 +26,9 @@ public interface InterfaceControllerRobot {
     void doForever();
 
     void done();
+
+    void setRobotArea(Area area);
+
+    Area getRobotArea();
+
 }

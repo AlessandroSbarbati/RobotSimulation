@@ -14,6 +14,6 @@ public class RectangularArea implements Area{
     }
     @Override
     public boolean contains(double x, double y) {
-        return false;
+        return x >= topLeftX && x <= topLeftX + width && y >= topLeftY && y <= topLeftY + height;
     }
 }

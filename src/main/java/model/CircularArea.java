@@ -12,6 +12,7 @@ public class CircularArea implements Area{
     }
     @Override
     public boolean contains(double x, double y) {
-        return false;
+        double distanceSquared = Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2);
+        return distanceSquared <= Math.pow(radius, 2);
     }
 }
