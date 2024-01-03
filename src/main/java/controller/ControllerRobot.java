@@ -32,7 +32,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
                 stop();
                 break;
             case CONTINUE:
-                continueCommand((int) args[0]);
+                continueCommand((int) args[0], args);
                 break;
             case REPEAT:
                 repeatCommand((int) args[0]);
@@ -104,33 +104,29 @@ public class ControllerRobot implements InterfaceControllerRobot {
     }
 
     @Override
-    public void continueCommand(int seconds) {
+    public void continueCommand(long seconds, double[] moveArgs) {
         System.out.println("Movimento continua per " + seconds + " secondi");
 
-        // Creazione di un thread per gestire il tempo di continuazione
-        Thread continueThread = new Thread(() -> {
-            long endTime = System.currentTimeMillis() + seconds * 1000; // Calcola il tempo di fine
+        long endTime = System.currentTimeMillis() + seconds * 1000; // Calcola il tempo di fine
 
-            while (System.currentTimeMillis() < endTime) {
-                // Logica da eseguire durante il periodo di continuazione
-                // Ad esempio, puoi aggiungere azioni specifiche che devono essere eseguite durante il movimento continuo.
-                System.out.println("Esecuzione di comandi durante il movimento continuo...");
+        while (System.currentTimeMillis() < endTime) {
+            // Logica da eseguire durante il periodo di continuazione
+            // Ad esempio, puoi aggiungere azioni specifiche che devono essere eseguite durante il movimento continuo.
+            System.out.println("Esecuzione di comandi durante il movimento continuo...");
 
-                try {
-                    Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            // Esegui il movimento continuo
+            move(moveArgs);
+
+            try {
+                Thread.sleep(1000); // Attendi per 1 secondo durante ogni iterazione (puoi regolare il valore)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+        }
 
-            // Fine del periodo di continuazione
-            System.out.println("Fine del movimento continuo.");
-        });
-
-        // Avvia il thread
-        continueThread.start();
+        // Fine del periodo di continuazione
+        System.out.println("Fine del movimento continuo.");
     }
-
 
     @Override
     public void repeatCommand(int iterations) {
@@ -147,7 +143,6 @@ public class ControllerRobot implements InterfaceControllerRobot {
             }
         }
     }
-
 
     @Override
     public void until(String label) {
@@ -189,7 +184,17 @@ public class ControllerRobot implements InterfaceControllerRobot {
 
     @Override
     public Area getRobotArea() {
-      return this.robotArea;
+        return this.robotArea;
+    }
+
+    @Override
+    public Robot getRobot() {
+        return robot;
+    }
+
+    @Override
+    public Area setRobotArea() {
+        return null;
     }
 
     private void simulateMovement(double targetX, double targetY, double time) {

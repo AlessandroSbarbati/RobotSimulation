@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/Simulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulatorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulatorInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +52,11 @@
     "settings.editor.selected.configurable": "preferences.sourceCode"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\39327\IdeaProjects\RobotSimulation\src\test\java" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -80,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704298052551</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="aggiunta thread">
+      <created>1704300915811</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704300915811</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -108,6 +115,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="setup iniziale" />
     <MESSAGE value="gestione robot e area" />
-    <option name="LAST_COMMIT_MESSAGE" value="gestione robot e area" />
+    <MESSAGE value="aggiunta thread" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunta thread" />
   </component>
 </project>

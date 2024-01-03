@@ -1,6 +1,7 @@
 package controller;
 
 import model.Area;
+import model.Robot;
 import utils.RobotCommand;
 
 public interface InterfaceControllerRobot {
@@ -17,7 +18,7 @@ public interface InterfaceControllerRobot {
 
     void stop();
 
-    void continueCommand(int seconds);
+    void continueCommand(long seconds,double[] moveArgs);
 
     void repeatCommand(int iterations);
 
@@ -31,4 +32,7 @@ public interface InterfaceControllerRobot {
 
     Area getRobotArea();
 
+    Robot getRobot();
+
+    Area setRobotArea();
 }

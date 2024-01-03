@@ -1,5 +1,7 @@
 package model;
 
+import java.security.cert.CertPathValidatorException;
+
 public class Robot {
     private double x;
     private double y;
@@ -14,6 +16,7 @@ public class Robot {
         this.moving = false;
         this.condition = "";
     }
+
 
     public double getX() {
         return x;
@@ -85,5 +88,9 @@ public class Robot {
 
     public double getSpeed() {
         return speed;
+    }
+
+    public String getConditions() {
+        return condition;
     }
 }
