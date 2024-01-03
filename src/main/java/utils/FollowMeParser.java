@@ -1,5 +1,7 @@
 package utils;
 
+import model.ShapeData;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

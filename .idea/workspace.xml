@@ -5,32 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Area.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Robot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simulator/Simulator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulatorInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/FollowMeParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/FollowMeParserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/FollowMeParserHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/FollowMeParserUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/FollowMeShapeChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/RobotCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/ShapeData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ShapeDataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/FollowMeParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/FollowMeParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ShapeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ShapeData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +49,12 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "17",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.sourceCode"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -81,6 +66,40 @@
       <option name="presentableId" value="Default" />
       <updated>1704211895216</updated>
     </task>
+    <task id="LOCAL-00001" summary="setup iniziale">
+      <created>1704215531444</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1704215531444</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="setup iniziale" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup iniziale" />
   </component>
 </project>
