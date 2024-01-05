@@ -61,8 +61,8 @@ public class ControllerRobot implements InterfaceControllerRobot {
 
         if (robotArea != null && robotArea.contains(x, y)) {
             if (!robot.isMoving()) {
-                robot.stopMoving();
-                robot.addCondition("Stopped");
+                robot.startMoving();
+                robot.addCondition("Moving");
 
                 double distance = Math.sqrt(Math.pow(x - robot.getX(), 2) + Math.pow(y - robot.getY(), 2));
                 double time = distance / speed;
@@ -192,29 +192,30 @@ public class ControllerRobot implements InterfaceControllerRobot {
         return robot;
     }
 
-    @Override
-    public Area setRobotArea() {
-        return null;
-    }
 
     private void simulateMovement(double targetX, double targetY, double time) {
-        // Implementa la logica per simulare il movimento del robot per il tempo specificato
-        // Puoi utilizzare un timer, un thread o un'altra logica di simulazione a seconda delle tue esigenze.
-        // Ad esempio, potresti aggiornare le coordinate del robot in modo incrementale per simulare il movimento.
-
+        // Calcola la quantità di spostamento richiesta per ogni passo
         double deltaX = (targetX - robot.getX()) / time;
         double deltaY = (targetY - robot.getY()) / time;
 
-        // Simula il movimento per il tempo specificato
-        for (double elapsed = 0; elapsed < time; elapsed += 0.1) {
-            robot.move(deltaX * 0.1, deltaY * 0.1); // Simula un passo di 0.1 secondi
-            // Puoi regolare il valore 0.1 in base alla frequenza di aggiornamento desiderata.
-            // Assicurati di gestire correttamente la concorrenza se stai utilizzando thread.
+        // Suddividi il tempo di movimento in passi più piccoli (ogni passo di 0.1 secondi)
+        double stepTime = 0.1;
+        int numSteps = (int) (time / stepTime);
+
+        // Simula il movimento attraverso i passi
+        for (int step = 0; step < numSteps; step++) {
+            // Aggiorna direttamente le coordinate del robot durante ciascun passo
+            robot.move(deltaX * stepTime, deltaY * stepTime);
+
+            // Puoi aggiungere ulteriori logiche o azioni durante il movimento, se necessario
+
+            // Attendi per il tempo specificato tra i passi (100 millisecondi nel tuo esempio)
             try {
-                Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
+                Thread.sleep(100); // Puoi regolare il valore in base alle tue esigenze
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
+
 }

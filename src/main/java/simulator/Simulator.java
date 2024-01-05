@@ -36,10 +36,20 @@ public class Simulator implements SimulatorInterface {
         for (Robot robot : robots) {
             for (Area area : areas) {
                 if (area.contains(robot.getX(), robot.getY())) {
-                    // Gestisci l'interazione tra il robot e l'area
-                    // Puoi personalizzare questa logica in base alle tue esigenze
+                    handleInteraction(robot, area);
                 }
             }
         }
+    }
+
+    private void handleInteraction(Robot robot, Area area) {
+        // Logica specifica di come il robot deve interagire con l'area
+        // Ad esempio, puoi chiamare metodi sul robot o sull'area per gestire l'interazione.
+
+        System.out.println("Il robot sta interagendo con l'area: " + area);
+        robot.addCondition("Interacting"); // Esempio di aggiunta di una condizione
+        // Puoi definire altre azioni specifiche qui...
+        area.reactToRobot(robot);
+        robot.removeCondition("Interacting"); // Esempio di rimozione di una condizione
     }
 }

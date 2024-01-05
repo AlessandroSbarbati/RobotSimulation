@@ -33,6 +33,4 @@ public interface InterfaceControllerRobot {
     Area getRobotArea();
 
     Robot getRobot();
-
-    Area setRobotArea();
 }

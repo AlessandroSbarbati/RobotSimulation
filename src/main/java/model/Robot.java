@@ -1,7 +1,5 @@
 package model;
 
-import java.security.cert.CertPathValidatorException;
-
 public class Robot {
     private double x;
     private double y;
@@ -50,7 +48,7 @@ public class Robot {
         if (!moving) {
             moving = true;
             condition = "Moving";
-            System.out.println("Il robot è iniziato a muoversi.");
+            System.out.println("Il robot ha iniziato a muoversi.");
         } else {
             System.out.println("Il robot è già in movimento.");
         }
@@ -92,5 +90,11 @@ public class Robot {
 
     public String getConditions() {
         return condition;
+    }
+
+    public void setSpeed(double newSpeed) {
+        // Imposta la nuova velocità del robot
+        this.speed = newSpeed;
+        System.out.println("La velocità del robot è stata impostata a: " + newSpeed + " m/s");
     }
 }

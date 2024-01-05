@@ -16,4 +16,20 @@ public class RectangularArea implements Area{
     public boolean contains(double x, double y) {
         return x >= topLeftX && x <= topLeftX + width && y >= topLeftY && y <= topLeftY + height;
     }
-}
+    public void reactToRobot(Robot robot) {
+        System.out.println("Il robot è entrato nell'area rettangolare.");
+
+        // Esempio di azioni più complesse:
+        if (robot.hasCondition("Moving")) {
+            // Se il robot è in movimento, lo ferma quando entra nell'area rettangolare
+            System.out.println("Il robot si ferma dentro l'area rettangolare.");
+            robot.stopMoving();
+        } else {
+            // Altrimenti, inizia a muoversi se non è già in movimento
+            System.out.println("Il robot inizia a muoversi dentro l'area rettangolare.");
+            robot.startMoving();
+        }
+
+        // Aggiungi una condizione specifica per l'area rettangolare
+        robot.addCondition("InRectangularArea");
+    }}
