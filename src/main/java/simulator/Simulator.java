@@ -1,7 +1,9 @@
 package simulator;
 
+import controller.ControllerRobot;
 import model.Robot;
 import model.Area;
+import utils.RobotCommand;
 
 import java.util.List;
 
@@ -9,10 +11,12 @@ public class Simulator implements SimulatorInterface {
 
     private List<Robot> robots;
     private List<Area> areas;
+    private ControllerRobot controllerRobot;
 
     public Simulator(List<Robot> robots, List<Area> areas) {
         this.robots = robots;
         this.areas = areas;
+        this.controllerRobot=new ControllerRobot(robots.get(0),areas.get(0),this);
     }
 
     @Override
@@ -32,6 +36,7 @@ public class Simulator implements SimulatorInterface {
         }
     }
 
+
     private void checkRobotAreaInteraction() {
         for (Robot robot : robots) {
             for (Area area : areas) {
@@ -45,11 +50,21 @@ public class Simulator implements SimulatorInterface {
     private void handleInteraction(Robot robot, Area area) {
         // Logica specifica di come il robot deve interagire con l'area
         // Ad esempio, puoi chiamare metodi sul robot o sull'area per gestire l'interazione.
+        System.out.println("Il robot sta interagendo con un'area.");
+        if (robot.isFollowing()) {
+            Robot followedRobot = findRobotByLabel(robot.getFollowLabel());
+            if (followedRobot != null) {
+                // Aggiorna la posizione del robot in base al robot seguito
+                robot.move(followedRobot.getX() - robot.getX(), followedRobot.getY() - robot.getY());
+            }
+        }
+    }
 
-        System.out.println("Il robot sta interagendo con l'area: " + area);
-        robot.addCondition("Interacting"); // Esempio di aggiunta di una condizione
-        // Puoi definire altre azioni specifiche qui...
-        area.reactToRobot(robot);
-        robot.removeCondition("Interacting"); // Esempio di rimozione di una condizione
+    public Robot findRobotByLabel(String label) {
+        // Trova un robot nella lista in base all'etichetta specificata
+        return robots.stream()
+                .filter(robot -> robot.getCondition().contains(label))
+                .findFirst()
+                .orElse(null);
     }
 }

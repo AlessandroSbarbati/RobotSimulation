@@ -27,9 +27,7 @@ public class Main {
         areas.add(area2);
 
         // Creazione del simulatore
-        SimulatorInterface simulator = new Simulator(robots, areas);
 
         // Esecuzione della simulazione
-        simulator.simulate(0.1, 10.0);
     }
 }

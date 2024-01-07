@@ -4,8 +4,10 @@ public class Robot {
     private double x;
     private double y;
     private double speed;
-    private boolean moving;
+    protected boolean moving;
     private String condition;
+    private boolean following;
+    private String followLabel;
 
     public Robot(double x, double y, double speed) {
         this.x = x;
@@ -13,6 +15,7 @@ public class Robot {
         this.speed = speed;
         this.moving = false;
         this.condition = "";
+        this.following=false;
     }
 
 
@@ -96,5 +99,17 @@ public class Robot {
         // Imposta la nuova velocità del robot
         this.speed = newSpeed;
         System.out.println("La velocità del robot è stata impostata a: " + newSpeed + " m/s");
+    }
+    public boolean isFollowing() {
+        return following;
+    }
+    public void setFollowing(boolean following) {
+        this.following = following;
+    }
+    public String getFollowLabel() {
+        return followLabel;
+    }
+    public void setFollowLabel(String followLabel) {
+        this.followLabel = followLabel;
     }
 }

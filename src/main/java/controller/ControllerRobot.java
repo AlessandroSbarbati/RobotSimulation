@@ -1,16 +1,21 @@
 package controller;
 
 import model.Area;
+import model.CircularArea;
+import model.RectangularArea;
 import model.Robot;
+import simulator.Simulator;
 import utils.RobotCommand;
 
 public class ControllerRobot implements InterfaceControllerRobot {
 
     private Robot robot;
     private Area robotArea;
-
-    public ControllerRobot(Robot robot) {
+    private Simulator simulator;
+    public ControllerRobot(Robot robot, Area robotArea, Simulator simulator) {
         this.robot = robot;
+        this.robotArea=robotArea;
+        this.simulator=simulator;
     }
 
     @Override
@@ -91,10 +96,63 @@ public class ControllerRobot implements InterfaceControllerRobot {
         System.out.println("Terminata segnalazione: " + label);
     }
 
+
     @Override
     public void follow(String label, double[] args) {
         System.out.println("Segue il robot con etichetta " + label);
+
+        // Imposta la modalità "follow"
+        robot.setFollowing(true);
+
+        // Ottieni il robot da seguire in base all'etichetta
+        Robot robotToFollow = findRobotByLabel(label);
+
+        if (robotToFollow != null) {
+            // Simula il movimento seguendo l'altro robot
+            simulateFollowMovement(robotToFollow);
+        } else {
+            System.out.println("Robot con etichetta " + label + " non trovato.");
+        }
+
+        // Resetta la modalità "follow" alla fine
+        robot.setFollowing(false);
     }
+
+    private Robot findRobotByLabel(String label) {
+        // Implementa la logica per trovare il robot con l'etichetta specificata
+        // Questo potrebbe coinvolgere la ricerca tra i robot nel simulatore.
+        // Restituisci il robot trovato o null se non è stato trovato.
+        return simulator.findRobotByLabel(label);
+    }
+
+    private void simulateFollowMovement(Robot robotToFollow) {
+        // Simula il movimento seguendo l'altro robot
+        while (robot.isFollowing()) {
+            // Calcola la direzione e la distanza tra il robot corrente e il robot da seguire
+            double direction = Math.atan2(robotToFollow.getY() - robot.getY(), robotToFollow.getX() - robot.getX());
+            double distance = Math.sqrt(Math.pow(robotToFollow.getX() - robot.getX(), 2) +
+                    Math.pow(robotToFollow.getY() - robot.getY(), 2));
+
+            // Calcola il passo da muovere (puoi regolare il valore in base alle tue esigenze)
+            double step = 0.1;
+
+            // Calcola i cambiamenti nelle coordinate x e y
+            double deltaX = step * Math.cos(direction);
+            double deltaY = step * Math.sin(direction);
+
+            // Sposta il robot nella direzione del robot da seguire
+            robot.move(deltaX, deltaY);
+
+            // Puoi aggiungere ulteriori logiche o azioni durante il movimento di "follow", se necessario
+
+            try {
+                Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     @Override
     public void stop() {
@@ -102,6 +160,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
         robot.addCondition("Stopped");
         System.out.println("Movimento interrotto");
     }
+
 
     @Override
     public void continueCommand(long seconds, double[] moveArgs) {
@@ -112,16 +171,11 @@ public class ControllerRobot implements InterfaceControllerRobot {
         while (System.currentTimeMillis() < endTime) {
             // Logica da eseguire durante il periodo di continuazione
             // Ad esempio, puoi aggiungere azioni specifiche che devono essere eseguite durante il movimento continuo.
-            System.out.println("Esecuzione di comandi durante il movimento continuo...");
 
             // Esegui il movimento continuo
             move(moveArgs);
 
-            try {
-                Thread.sleep(1000); // Attendi per 1 secondo durante ogni iterazione (puoi regolare il valore)
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            // Aggiungi qui logiche specifiche da eseguire durante il movimento continuo
         }
 
         // Fine del periodo di continuazione
@@ -149,6 +203,10 @@ public class ControllerRobot implements InterfaceControllerRobot {
         while (!robot.hasCondition(label)) {
             // Aggiungi la logica dei comandi che devono essere ripetuti finché la condizione non è soddisfatta
             // Ad esempio, potresti aspettare un breve periodo di tempo prima di controllare nuovamente la condizione.
+
+            // Puoi aggiungere logiche specifiche da eseguire durante l'attesa
+            // Ad esempio, puoi modificare la posizione del robot in base a certe condizioni.
+
             try {
                 Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
             } catch (InterruptedException e) {
@@ -158,12 +216,17 @@ public class ControllerRobot implements InterfaceControllerRobot {
         System.out.println("Condizione " + label + " percepita");
     }
 
+
     @Override
     public void doForever() {
         while (true) {
             System.out.println("Iterazione infinita");
             // Aggiungi la logica dei comandi che devono essere ripetuti all'infinito
             // Ad esempio, potresti aspettare un breve periodo di tempo prima di iniziare la prossima iterazione.
+
+            // Puoi aggiungere logiche specifiche da eseguire durante ogni iterazione dell'infinito
+            // Ad esempio, puoi modificare la posizione del robot in base a certe condizioni.
+
             try {
                 Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
             } catch (InterruptedException e) {
@@ -171,6 +234,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
             }
         }
     }
+
 
     @Override
     public void done() {
@@ -216,6 +280,16 @@ public class ControllerRobot implements InterfaceControllerRobot {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void handleInteraction(Robot robot, Area area) {
+        if (area instanceof RectangularArea) {
+            robot.addCondition("Interacting with RectangularArea");
+        } else if (area instanceof CircularArea) {
+            robot.addCondition("Interacting with CircularArea");
+        }
+
+        // Altre logiche di interazione, se necessario
     }
 
 }

@@ -1,6 +1,5 @@
-package model;
+    package model;
 
-public interface Area {
-    boolean contains(double x, double y);
-    void reactToRobot(Robot robot);
-}
+    public interface Area {
+        boolean contains(double x, double y);
+    }
