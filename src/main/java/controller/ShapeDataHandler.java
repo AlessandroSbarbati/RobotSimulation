@@ -9,15 +9,12 @@ public class ShapeDataHandler {
     public static Area createAreaFromShape(ShapeData shapeData) {
         String shape = shapeData.shape().toUpperCase();
 
-        switch (shape) {
-            case "CIRCLE":
-                return createCircularArea(shapeData);
-            case "RECTANGLE":
-                return createRectangularArea(shapeData);
+        return switch (shape) {
+            case "CIRCLE" -> createCircularArea(shapeData);
+            case "RECTANGLE" -> createRectangularArea(shapeData);
             // Puoi aggiungere altri tipi di forme se necessario
-            default:
-                throw new IllegalArgumentException("Forma non supportata: " + shape);
-        }
+            default -> throw new IllegalArgumentException("Forma non supportata: " + shape);
+        };
     }
 
     private static CircularArea createCircularArea(ShapeData shapeData) {

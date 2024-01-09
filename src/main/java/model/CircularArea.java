@@ -6,6 +6,10 @@ public class CircularArea implements Area{
     private double radius;
 
     public CircularArea(double centerX, double centerY, double radius){
+        if (radius <= 0) {
+            throw new IllegalArgumentException("Il raggio deve essere positivo.");
+        }
+
         this.centerX=centerX;
         this.centerY=centerY;
         this.radius=radius;

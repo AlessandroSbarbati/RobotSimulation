@@ -7,6 +7,10 @@ public class RectangularArea implements Area{
     private double height;
 
     public RectangularArea(double topLeftX, double topLeftY, double width, double height){
+        if (width<=0 || height<=0){
+            throw new IllegalArgumentException("Larghezza e altezza devono essere entrambe positive.");
+        }
+
         this.topLeftX=topLeftX;
         this.topLeftY=topLeftY;
         this.width=width;

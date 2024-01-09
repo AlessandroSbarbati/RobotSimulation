@@ -4,6 +4,8 @@ import model.Area;
 import model.Robot;
 import utils.RobotCommand;
 
+import java.util.List;
+
 public interface InterfaceControllerRobot {
 
     void executeCommand(RobotCommand command, double[] args, String label);
@@ -35,4 +37,7 @@ public interface InterfaceControllerRobot {
     Area getRobotArea();
 
     Robot getRobot();
+
+    void setRepeatedCommand(List<RobotCommand> commands);
+
 }

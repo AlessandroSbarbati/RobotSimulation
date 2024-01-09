@@ -5,7 +5,7 @@ import model.CircularArea;
 import model.RectangularArea;
 import model.Robot;
 
-public class InteractionHandler {
+public class InteractionHandler implements InterfaceInteractionHandler{
     public void handleInteraction(Robot robot, Area area) {
         if (area instanceof RectangularArea) {
             robot.addCondition("Interacting with RectangularArea");
