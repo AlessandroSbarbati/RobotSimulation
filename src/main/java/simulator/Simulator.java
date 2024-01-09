@@ -15,11 +15,14 @@ public class Simulator implements SimulatorInterface {
     private ControllerRobot controllerRobot;
     private InteractionHandler interactionHandler;
 
-    public Simulator(List<Robot> robots, List<Area> areas) {
+    private List<SimulatorCommand> simulatorCommands;
+
+    public Simulator(List<Robot> robots, List<Area> areas, List<SimulatorCommand> simulatorCommands) {
         this.robots = robots;
         this.areas = areas;
         this.controllerRobot = new ControllerRobot(robots.get(0), areas.get(0), this);
         this.interactionHandler = new InteractionHandler();
+        this.simulatorCommands = simulatorCommands;
     }
 
     @Override
@@ -27,9 +30,14 @@ public class Simulator implements SimulatorInterface {
         for (double currentTime = 0; currentTime < time; currentTime += dt) {
             updateRobots(dt);
             checkRobotAreaInteraction();
+            executeSimulatorCommands();
         }
     }
-
+    private void executeSimulatorCommands() {
+        for (SimulatorCommand command : simulatorCommands) {
+            command.run();
+        }
+    }
     private void updateRobots(double dt) {
         for (Robot robot : robots) {
             if (robot.isMoving()) {

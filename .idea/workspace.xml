@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/simulator/MoveSimulatorCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulatorCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/Simulator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -121,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704824237659</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="metodi until e doforever">
+      <created>1704825206061</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704825206061</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -155,6 +163,7 @@
     <MESSAGE value="gestione comandi ControllerRobot" />
     <MESSAGE value="gestione condizione Robot" />
     <MESSAGE value="metodo repeatCommand" />
-    <option name="LAST_COMMIT_MESSAGE" value="metodo repeatCommand" />
+    <MESSAGE value="metodi until e doforever" />
+    <option name="LAST_COMMIT_MESSAGE" value="metodi until e doforever" />
   </component>
 </project>
