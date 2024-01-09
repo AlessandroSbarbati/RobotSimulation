@@ -18,8 +18,8 @@ public enum RobotCommand {
     REPEAT("REPEAT"),
     UNTIL("UNTIL"),
     FOREVER("DO FOREVER"),
-    DONE("DONE")
-    ;
+    DONE("DONE"),
+    MOVERANDOM("RANDOM");
 
     private final String code;
 

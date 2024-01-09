@@ -10,6 +10,8 @@ public interface InterfaceControllerRobot {
 
     void move(double[] args);
 
+    void moveRandom(double[] args);
+
     void signal(String label);
 
     void unsignal(String label);

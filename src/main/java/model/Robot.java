@@ -1,11 +1,14 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Robot {
     private double x;
     private double y;
     private double speed;
     protected boolean moving;
-    private String condition;
+    private Set<String> conditions;
     private boolean following;
     private String followLabel;
 
@@ -14,10 +17,9 @@ public class Robot {
         this.y = y;
         this.speed = speed;
         this.moving = false;
-        this.condition = "";
-        this.following=false;
+        this.conditions = new HashSet<>();
+        this.following = false;
     }
-
 
     public double getX() {
         return x;
@@ -31,8 +33,8 @@ public class Robot {
         return moving;
     }
 
-    public String getCondition() {
-        return condition;
+    public Set<String> getConditions() {
+        return conditions;
     }
 
     public void move(double deltaX, double deltaY) {
@@ -50,7 +52,7 @@ public class Robot {
         // Implementa la logica per far iniziare il movimento del robot
         if (!moving) {
             moving = true;
-            condition = "Moving";
+            conditions.add("Moving");
             System.out.println("Il robot ha iniziato a muoversi.");
         } else {
             System.out.println("Il robot è già in movimento.");
@@ -61,7 +63,7 @@ public class Robot {
         // Implementa la logica per fermare il movimento del robot
         if (moving) {
             moving = false;
-            condition = "Stopped";
+            conditions.add("Stopped");
             System.out.println("Il robot si è fermato.");
         } else {
             System.out.println("Il robot è già fermo.");
@@ -70,29 +72,23 @@ public class Robot {
 
     public void addCondition(String newCondition) {
         // Implementa la logica per aggiungere una nuova condizione al robot
-        condition += (condition.isEmpty() ? "" : ", ") + newCondition;
+        conditions.add(newCondition);
         System.out.println("Nuova condizione aggiunta: " + newCondition);
     }
 
     public void removeCondition(String conditionToRemove) {
         // Implementa la logica per rimuovere una condizione dal robot
-        condition = condition.replace(conditionToRemove + ", ", "");
-        condition = condition.replace(", " + conditionToRemove, "");
-        condition = condition.replace(conditionToRemove, "");
+        conditions.remove(conditionToRemove);
         System.out.println("Condizione rimossa: " + conditionToRemove);
     }
 
     public boolean hasCondition(String checkCondition) {
         // Implementa la logica per verificare se il robot ha una determinata condizione
-        return condition.contains(checkCondition);
+        return conditions.contains(checkCondition);
     }
 
     public double getSpeed() {
         return speed;
-    }
-
-    public String getConditions() {
-        return condition;
     }
 
     public void setSpeed(double newSpeed) {
@@ -100,15 +96,19 @@ public class Robot {
         this.speed = newSpeed;
         System.out.println("La velocità del robot è stata impostata a: " + newSpeed + " m/s");
     }
+
     public boolean isFollowing() {
         return following;
     }
+
     public void setFollowing(boolean following) {
         this.following = following;
     }
+
     public String getFollowLabel() {
         return followLabel;
     }
+
     public void setFollowLabel(String followLabel) {
         this.followLabel = followLabel;
     }

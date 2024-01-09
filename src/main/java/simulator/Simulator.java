@@ -1,10 +1,11 @@
 package simulator;
 
 import controller.ControllerRobot;
-import model.Robot;
+import controller.InteractionHandler;
 import model.Area;
-import utils.RobotCommand;
+import model.Robot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Simulator implements SimulatorInterface {
@@ -12,11 +13,13 @@ public class Simulator implements SimulatorInterface {
     private List<Robot> robots;
     private List<Area> areas;
     private ControllerRobot controllerRobot;
+    private InteractionHandler interactionHandler;
 
     public Simulator(List<Robot> robots, List<Area> areas) {
         this.robots = robots;
         this.areas = areas;
-        this.controllerRobot=new ControllerRobot(robots.get(0),areas.get(0),this);
+        this.controllerRobot = new ControllerRobot(robots.get(0), areas.get(0), this);
+        this.interactionHandler = new InteractionHandler();
     }
 
     @Override
@@ -36,35 +39,33 @@ public class Simulator implements SimulatorInterface {
         }
     }
 
-
     private void checkRobotAreaInteraction() {
         for (Robot robot : robots) {
             for (Area area : areas) {
                 if (area.contains(robot.getX(), robot.getY())) {
-                    handleInteraction(robot, area);
+                    interactionHandler.handleInteraction(robot, area);
                 }
             }
         }
     }
 
-    private void handleInteraction(Robot robot, Area area) {
-        // Logica specifica di come il robot deve interagire con l'area
-        // Ad esempio, puoi chiamare metodi sul robot o sull'area per gestire l'interazione.
-        System.out.println("Il robot sta interagendo con un'area.");
-        if (robot.isFollowing()) {
-            Robot followedRobot = findRobotByLabel(robot.getFollowLabel());
-            if (followedRobot != null) {
-                // Aggiorna la posizione del robot in base al robot seguito
-                robot.move(followedRobot.getX() - robot.getX(), followedRobot.getY() - robot.getY());
-            }
-        }
-    }
-
-    public Robot findRobotByLabel(String label) {
+    private Robot findRobotByLabel(String label) {
         // Trova un robot nella lista in base all'etichetta specificata
         return robots.stream()
-                .filter(robot -> robot.getCondition().contains(label))
+                .filter(robot -> robot.getConditions().contains(label))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public List<Robot> findRobotsByCondition(String condition) {
+        List<Robot> robotsWithCondition = new ArrayList<>();
+
+        for (Robot robot : robots) {
+            if (robot.getConditions().contains(condition)) {
+                robotsWithCondition.add(robot);
+            }
+        }
+
+        return robotsWithCondition;
     }
 }
