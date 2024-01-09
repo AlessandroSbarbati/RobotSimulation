@@ -1,8 +1,6 @@
 import model.Area;
 import model.Robot;
 import model.CircularArea;
-import simulator.Simulator;
-import simulator.SimulatorInterface;
 
 import java.util.ArrayList;
 import java.util.List;

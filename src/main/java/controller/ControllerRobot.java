@@ -2,7 +2,7 @@ package controller;
 
 import model.Area;
 import model.Robot;
-import simulator.Simulator;
+import simulator.SimulatorImpl;
 import utils.RobotCommand;
 
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class ControllerRobot implements InterfaceControllerRobot {
 
-    private Robot robot;
+    private final Robot robot;
     private Area robotArea;
-    private Simulator simulator;
+    private final SimulatorImpl simulator;
 
-    private InteractionHandler interactionHandler;
+    private final InteractionHandler interactionHandler;
 
     private List<RobotCommand> listCommands;
     /**
@@ -26,7 +26,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
      * @param robotArea L'area in cui il robot può muoversi.
      * @param simulator Il simulatore che gestisce la simulazione.
      */
-    public ControllerRobot(Robot robot, Area robotArea, Simulator simulator) {
+    public ControllerRobot(Robot robot, Area robotArea, SimulatorImpl simulator) {
         this.robot = robot;
         this.robotArea=robotArea;
         this.simulator=simulator;
@@ -43,44 +43,23 @@ public class ControllerRobot implements InterfaceControllerRobot {
     @Override
     public void executeCommand(RobotCommand command, double[] args, String label) {
         switch (command) {
-            case MOVE:
-                move(args);
-                break;
-            case MOVERANDOM:
-                moveRandom(args);
-                break;
-            case SIGNAL:
-                signal(label);
-                break;
-            case UNSIGNAL:
-                unsignal(label);
-                break;
-            case FOLLOW:
-                follow(label, args);
-                break;
-            case STOP:
-                stop();
-                break;
-            case CONTINUE:
-                continueCommand((int) args[0], args);
-                break;
-            case REPEAT:
+            case MOVE -> move(args);
+            case MOVERANDOM -> moveRandom(args);
+            case SIGNAL -> signal(label);
+            case UNSIGNAL -> unsignal(label);
+            case FOLLOW -> follow(label, args);
+            case STOP -> stop();
+            case CONTINUE -> continueCommand((int) args[0], args);
+            case REPEAT -> {
                 setListCommand(listCommands);
                 repeatCommand((int) args[0]);
-                break;
-            case UNTIL:
-                until(label);
-                break;
-            case FOREVER:
-                doForever();
-                break;
-            case DONE:
-                done();
-                break;
-            default:
+            }
+            case UNTIL -> until(label);
+            case FOREVER -> doForever();
+            case DONE -> done();
+            default ->
                 // Gestione del caso in cui il comando non è riconosciuto
-                System.out.println("Comando non riconosciuto: " + command);
-                break;
+                    System.out.println("Comando non riconosciuto: " + command);
         }
     }
     /**
@@ -398,11 +377,10 @@ public class ControllerRobot implements InterfaceControllerRobot {
             // Aggiorna direttamente le coordinate del robot durante ciascun passo
             robot.move(deltaX * stepTime, deltaY * stepTime);
 
-            // Puoi aggiungere ulteriori logiche o azioni durante il movimento, se necessario
 
-            // Attendi per il tempo specificato tra i passi (100 millisecondi nel tuo esempio)
+            // Attendi per il tempo specificato tra i passi (100 millisecondi)
             try {
-                Thread.sleep(100); // Puoi regolare il valore in base alle tue esigenze
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
