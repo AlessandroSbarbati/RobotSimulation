@@ -38,6 +38,6 @@ public interface InterfaceControllerRobot {
 
     Robot getRobot();
 
-    void setRepeatedCommand(List<RobotCommand> commands);
+    void setListCommand(List<RobotCommand> commands);
 
 }

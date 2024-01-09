@@ -18,7 +18,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
 
     private InteractionHandler interactionHandler;
 
-    private List<RobotCommand> repeatedCommands;
+    private List<RobotCommand> listCommands;
     /**
      * Costruttore per ControllerRobot.
      *
@@ -31,7 +31,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
         this.robotArea=robotArea;
         this.simulator=simulator;
         this.interactionHandler = new InteractionHandler();
-        this.repeatedCommands = new ArrayList<>();
+        this.listCommands = new ArrayList<>();
     }
     /**
      * Esegue un comando specificato con argomenti e un'etichetta associata.
@@ -65,7 +65,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
                 continueCommand((int) args[0], args);
                 break;
             case REPEAT:
-                setRepeatedCommand(repeatedCommands);
+                setListCommand(listCommands);
                 repeatCommand((int) args[0]);
                 break;
             case UNTIL:
@@ -275,11 +275,11 @@ public class ControllerRobot implements InterfaceControllerRobot {
      */
     @Override
     public void repeatCommand(int iterations) {
-        if (repeatedCommands != null) {
+        if (listCommands != null) {
             for (int i = 0; i < iterations; i++) {
                 System.out.println("Iterazione " + (i + 1));
 
-                for (RobotCommand command : repeatedCommands) {
+                for (RobotCommand command : listCommands) {
                     executeCommand(command, new double[]{}, "");
                 }
 
@@ -293,51 +293,66 @@ public class ControllerRobot implements InterfaceControllerRobot {
             System.out.println("Attenzione: La lista di comandi ripetuti non è stata impostata.");
         }
     }
-
-    public void setRepeatedCommand(List<RobotCommand> command) {
-        this.repeatedCommands = command;
+    /**
+     * Imposta la lista dei comandi che devono essere ripetuti.
+     *
+     * @param command La lista dei comandi da impostare per la ripetizione.
+     */
+    @Override
+    public void setListCommand(List<RobotCommand> command) {
+        this.listCommands = command;
     }
 
     /**
-     * Attende finché una condizione specifica non è soddisfatta.
-     * La condizione è specificata da un'etichetta di segnalazione.
+     * Ripete una sequenza di comandi fino a quando una certa condizione è percepita nell'ambiente (ossia il robot è all'interno di un'area con la label richiesta).
      *
      * @param label L'etichetta della condizione da attendere.
      */
     @Override
     public void until(String label) {
-        while (!robot.hasCondition(label)) {
-            try {
-                Thread.sleep(100); // Attendi per 100 millisecondi
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        if (listCommands != null) {
+            while (!robot.hasCondition(label)) {
+                for (RobotCommand command : listCommands) {
+                    executeCommand(command, new double[]{}, "");
+                }
+
+                try {
+                    Thread.sleep(100); // Attendi per 100 millisecondi
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+            System.out.println("Condizione " + label + " percepita");
+        } else {
+            System.out.println("Attenzione: La lista di comandi per UNTIL non è stata impostata.");
         }
-        System.out.println("Condizione " + label + " percepita");
     }
 
+
     /**
-     * Esegue ciclicamente una serie di comandi all'infinito.
-     * Puoi aggiungere logiche specifiche da eseguire durante ogni iterazione dell'infinito,
-     * ad esempio, modificare la posizione del robot in base a certe condizioni.
+     * Ripete un comportamento per sempre.
      */
     @Override
     public void doForever() {
-        while (true) {
-            System.out.println("Iterazione infinita");
-            // Aggiungi la logica dei comandi che devono essere ripetuti all'infinito
-            // Ad esempio, potresti aspettare un breve periodo di tempo prima di iniziare la prossima iterazione.
+        if (listCommands != null) {
+            while (true) {
+                System.out.println("Iterazione infinita");
 
-            // Puoi aggiungere logiche specifiche da eseguire durante ogni iterazione dell'infinito
-            // Ad esempio, puoi modificare la posizione del robot in base a certe condizioni.
+                for (RobotCommand command : listCommands) {
+                    executeCommand(command, new double[]{}, "");
+                }
 
-            try {
-                Thread.sleep(100); // Attendi per 100 millisecondi (puoi regolare il valore)
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                try {
+                    Thread.sleep(100); // Attendi per 100 millisecondi
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+        } else {
+            System.out.println("Attenzione: La lista di comandi per DO FOREVER non è stata impostata.");
         }
     }
+
 
     /**
      * Segnala la fine della sequenza di comandi.
