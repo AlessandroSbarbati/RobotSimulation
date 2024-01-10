@@ -1,18 +1,17 @@
 package controller;
 
 import model.Area;
-import model.CircularArea;
-import model.RectangularArea;
 import model.Robot;
-
-public class InteractionHandler implements InterfaceInteractionHandler{
-    public void handleInteraction(Robot robot, Area area) {
-        if (area instanceof RectangularArea) {
-            robot.addCondition("Interacting with RectangularArea");
-        } else if (area instanceof CircularArea) {
-            robot.addCondition("Interacting with CircularArea");
-        }
-    }
-
-
+/**
+ * L'interfaccia InteractionHandler definisce il contratto per gestire l'interazione tra un robot e un'area.
+ */
+public interface InteractionHandler {
+    /**
+     * Gestisce l'interazione tra il robot e l'area specificata.
+     *
+     * @param robot Il robot coinvolto nell'interazione.
+     * @param area  L'area con cui il robot interagisce.
+     */
+    void handleInteraction(Robot robot, Area area);
 }
+

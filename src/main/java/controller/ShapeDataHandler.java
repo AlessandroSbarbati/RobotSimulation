@@ -4,8 +4,17 @@ import model.Area;
 import model.CircularArea;
 import model.RectangularArea;
 import model.ShapeData;
-
+/**
+ * La classe ShapeDataHandler gestisce la creazione di aree in base ai dati della forma specificati.
+ */
 public class ShapeDataHandler {
+    /**
+     * Crea un'area in base ai dati della forma specificati.
+     *
+     * @param shapeData I dati della forma.
+     * @return Un'istanza di Area creata in base ai dati della forma.
+     * @throws IllegalArgumentException Se la forma specificata non è supportata o se il numero di argomenti è errato.
+     */
     public static Area createAreaFromShape(ShapeData shapeData) {
         String shape = shapeData.shape().toUpperCase();
 

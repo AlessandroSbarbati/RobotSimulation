@@ -16,7 +16,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
     private Area robotArea;
     private final SimulatorImpl simulator;
 
-    private final InteractionHandler interactionHandler;
+    private final DefaultInteractionHandler interactionHandler;
 
     private List<RobotCommand> listCommands;
     /**
@@ -30,7 +30,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
         this.robot = robot;
         this.robotArea=robotArea;
         this.simulator=simulator;
-        this.interactionHandler = new InteractionHandler();
+        this.interactionHandler = new DefaultInteractionHandler();
         this.listCommands = new ArrayList<>();
     }
     /**
