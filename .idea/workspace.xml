@@ -4,24 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/DefaultInteractionHandler.java" afterDir="false" />
+    <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="inserimento javadoc">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ControllerRobotTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/DefaultInteractionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ShapeDataHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/SimulatorImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InteractionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InteractionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InterfaceInteractionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ShapeDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ShapeDataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Area.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ShapeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ShapeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/AreaChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/AreaChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/DefaultAreaChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/DefaultAreaChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/DefaultRobotUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/DefaultRobotUpdater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/RobotUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/RobotUpdater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/Simulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulatorImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +62,116 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\39327\IdeaProjects\RobotSimulation\src\test\java" />
     </key>
+  </component>
+  <component name="RunManager" selected="Gradle.SimulatorImplTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="RobotSimulation.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ControllerRobotTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ControllerRobotTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="DefaultInteractionHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;DefaultInteractionHandlerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ShapeDataHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ShapeDataHandlerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SimulatorImplTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;SimulatorImplTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.SimulatorImplTest" />
+        <item itemvalue="Gradle.ControllerRobotTest" />
+        <item itemvalue="Gradle.DefaultInteractionHandlerTest" />
+        <item itemvalue="Gradle.ShapeDataHandlerTest" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -157,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704832757681</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="inserimento javadoc">
+      <created>1704889221664</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1704889221664</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -194,6 +303,7 @@
     <MESSAGE value="metodi until e doforever" />
     <MESSAGE value="gestione simulatore" />
     <MESSAGE value="gestione simulatore e aggiunta classi" />
-    <option name="LAST_COMMIT_MESSAGE" value="gestione simulatore e aggiunta classi" />
+    <MESSAGE value="inserimento javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="inserimento javadoc" />
   </component>
 </project>

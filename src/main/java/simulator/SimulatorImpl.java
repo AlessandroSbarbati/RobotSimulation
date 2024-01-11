@@ -75,7 +75,7 @@ public class SimulatorImpl implements Simulator {
      * @param label L'etichetta da cercare.
      * @return Il robot con l'etichetta specificata, null se non trovato.
      */
-    private Robot findRobotByLabel(String label) {
+    public Robot findRobotByLabel(String label) {
         return robots.stream()
                 .filter(robot -> robot.getConditions().contains(label))
                 .findFirst()

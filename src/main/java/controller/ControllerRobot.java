@@ -363,7 +363,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
      * @param targetY La coordinata y della destinazione.
      * @param time    Il tempo in cui completare il movimento.
      */
-    private void simulateMovement(double targetX, double targetY, double time) {
+    public void simulateMovement(double targetX, double targetY, double time) {
         // Calcola la quantità di spostamento richiesta per ogni passo
         double deltaX = (targetX - robot.getX()) / time;
         double deltaY = (targetY - robot.getY()) / time;
@@ -392,7 +392,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
      * @param robot Il robot coinvolto nell'interazione.
      * @param area  L'area con cui il robot interagisce.
      */
-    private void handleInteraction(Robot robot, Area area) {
+    public void handleInteraction(Robot robot, Area area) {
         interactionHandler.handleInteraction(robot, area);  // Delegato al gestore di interazione
     }
 

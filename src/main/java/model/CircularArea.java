@@ -79,4 +79,40 @@ public class CircularArea implements Area {
     public double getMinY() {
         return centerY - radius;
     }
+    /**
+     * Restituisce la coordinata x del centro dell'area circolare.
+     *
+     * @return Il valore della coordinata x del centro.
+     */
+    public double getCenterX() {
+        return centerX;
+    }
+
+    /**
+     * Restituisce la coordinata y del centro dell'area circolare.
+     *
+     * @return Il valore della coordinata y del centro.
+     */
+    public double getCenterY() {
+        return centerY;
+    }
+
+    /**
+     * Restituisce il raggio dell'area circolare.
+     *
+     * @return Il valore del raggio dell'area circolare.
+     */
+    public double getRadius() {
+        return radius;
+    }
+
+    /**
+     * Restituisce un array contenente i valori di centerX, centerY e radius dell'area circolare.
+     *
+     * @return Un array di double contenente i valori di centerX, centerY e radius, nell'ordine.
+     */
+    public double[] getParameters() {
+        return new double[]{centerX, centerY, radius};
+    }
+
 }

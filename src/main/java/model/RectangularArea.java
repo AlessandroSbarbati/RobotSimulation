@@ -82,4 +82,40 @@ public class RectangularArea implements Area {
     public double getMinY() {
         return topLeftY;
     }
+
+    /**
+     * Restituisce la coordinata x del vertice in alto a sinistra dell'area rettangolare.
+     *
+     * @return La coordinata x del vertice in alto a sinistra.
+     */
+    public double getTopLeftX() {
+        return topLeftX;
+    }
+
+    /**
+     * Restituisce la coordinata y del vertice in alto a sinistra dell'area rettangolare.
+     *
+     * @return La coordinata y del vertice in alto a sinistra.
+     */
+    public double getTopLeftY() {
+        return topLeftY;
+    }
+
+    /**
+     * Restituisce la larghezza dell'area rettangolare.
+     *
+     * @return La larghezza dell'area rettangolare.
+     */
+    public double getWidth() {
+        return width;
+    }
+
+    /**
+     * Restituisce l'altezza dell'area rettangolare.
+     *
+     * @return L'altezza dell'area rettangolare.
+     */
+    public double getHeight() {
+        return height;
+    }
 }
