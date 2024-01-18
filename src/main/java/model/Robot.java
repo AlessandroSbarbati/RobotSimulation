@@ -1,5 +1,7 @@
 package model;
 
+import simulator.SimulatorImpl;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +18,8 @@ public class Robot {
     private final Set<String> conditions;
     private boolean following;
     private String followLabel;
+
+    private SimulatorImpl simulator;
 
     /**
      * Costruttore per la classe Robot.
@@ -194,5 +198,19 @@ public class Robot {
      */
     public void setFollowLabel(String followLabel) {
         this.followLabel = followLabel;
+    }
+    /**
+     * Restituisce un identificatore approssimativo del robot basato sulla sua posizione nella lista.
+     *
+     * @return Un identificatore approssimativo del robot.
+     */
+    public int getId() {
+        // Verifica che il robot sia nella lista e poi restituisci l'indice + 1
+        if (simulator.getRobots().contains(this)) {
+            return simulator.getRobots().indexOf(this) + 1;
+        } else {
+            // Gestisci il caso in cui il robot non sia presente nella lista
+            return -1; // o un valore che indichi l'assenza dell'identificatore
+        }
     }
 }

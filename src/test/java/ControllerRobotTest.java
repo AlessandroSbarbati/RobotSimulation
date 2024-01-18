@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import controller.ControllerRobot;
 import model.Area;
+import model.InfiniteSurface;
 import model.RectangularArea;
 import model.Robot;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +18,9 @@ import java.util.List;
 class ControllerRobotTest {
 
     private ControllerRobot controllerRobot;
+    private InfiniteSurface infiniteSurface;
+    private SimulatorImpl simulator;
+
     private List<Robot> robots;
     private List<Area> areas;
     private RobotUpdater robotUpdater;
@@ -25,13 +29,19 @@ class ControllerRobotTest {
     @BeforeEach
     void setUp() {
         // Inizializza un nuovo ControllerRobot con le dipendenze necessarie
-        // Puoi anche inizializzare un oggetto Robot, un oggetto Area, e un oggetto SimulatorImpl se necessario
-        Robot robot = new Robot(0,0,0.1);
-        Area robotArea = new RectangularArea(0, 0, 100, 100); // Sostituisci con i valori corretti
+        Robot robot = new Robot(0, 0, 0.1);
+        infiniteSurface = new InfiniteSurface();
+        simulator = new SimulatorImpl(robots, infiniteSurface);
 
-        SimulatorImpl simulator = new SimulatorImpl(robots,areas,robotUpdater,areaChecker);
+        // Aggiungi il robot alla simulazione
+        simulator.getRobots().add(robot);
 
-        controllerRobot = new ControllerRobot(robot, robotArea, simulator);
+        // Crea un'area rettangolare nell'infiniteSurface
+        RectangularArea robotArea = new RectangularArea(0, 0, 100, 100);
+        infiniteSurface.addArea(robotArea);
+
+        // Inizializza il ControllerRobot
+        controllerRobot = new ControllerRobot(robot, infiniteSurface, simulator);
     }
 
     @Test

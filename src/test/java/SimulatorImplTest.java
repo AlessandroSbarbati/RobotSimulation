@@ -1,7 +1,4 @@
-import model.Area;
-import model.CircularArea;
-import model.RectangularArea;
-import model.Robot;
+import model.*;
 import org.junit.jupiter.api.Test;
 import simulator.*;
 
@@ -16,10 +13,8 @@ class SimulatorImplTest {
     void createRandomRobots_validInput_createsRobots() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
         CircularArea circularArea = new CircularArea(0, 0, 10);
 
         // Act
@@ -36,10 +31,8 @@ class SimulatorImplTest {
     void findRobotByLabel_existingLabel_returnsRobot() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
         Robot robot = new Robot(1, 2, 3);
         robot.addCondition("Label");
         robots.add(robot);
@@ -56,10 +49,8 @@ class SimulatorImplTest {
     void findRobotByLabel_nonexistentLabel_returnsNull() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
 
         // Act
         Robot result = simulator.findRobotByLabel("NonexistentLabel");
@@ -72,10 +63,8 @@ class SimulatorImplTest {
     void findRobotsByCondition_existingCondition_returnsRobots() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
         Robot robot1 = new Robot(1, 2, 3);
         Robot robot2 = new Robot(4, 5, 6);
         robot1.addCondition("Condition");
@@ -97,10 +86,8 @@ class SimulatorImplTest {
     void findRobotsByCondition_nonexistentCondition_returnsEmptyList() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
 
         // Act
         List<Robot> result = simulator.findRobotsByCondition("NonexistentCondition");
@@ -114,26 +101,24 @@ class SimulatorImplTest {
     void createRandomRobots_invalidArea_throwsException() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
         RectangularArea rectangularArea = new RectangularArea(0, 0, -5, 10);  // Invalid area with negative width
 
         // Act and Assert
         assertThrows(IllegalArgumentException.class, () -> simulator.createRandomRobots(5, rectangularArea));
     }
+
     @Test
     void simulateScenario1_validInput_simulatesScenario() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
+        SimulationScenario1.addCustomCommandsForScenario1(simulator);
 
         // Act
-        simulator.simulateScenario1(0.1, 1.0);
+        simulator.simulate(0.1, 1.0);
 
         // Assert
         for (Robot robot : robots) {
@@ -146,13 +131,12 @@ class SimulatorImplTest {
     void simulateScenario2_validInput_simulatesScenario() {
         // Arrange
         List<Robot> robots = new ArrayList<>();
-        List<Area> areas = new ArrayList<>();
-        DefaultRobotUpdater robotUpdater = new DefaultRobotUpdater();
-        DefaultAreaChecker areaChecker = new DefaultAreaChecker();
-        SimulatorImpl simulator = new SimulatorImpl(robots, areas, robotUpdater, areaChecker);
+        InfiniteSurface infiniteSurface = new InfiniteSurface();
+        SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
+        SimulationScenario2.addCustomCommandsForScenario2(simulator);
 
         // Act
-        simulator.simulateScenario2(0.1, 1.0);
+        simulator.simulate(0.1, 1.0);
 
         // Assert
         for (Robot robot : robots) {
@@ -160,5 +144,4 @@ class SimulatorImplTest {
             assertFalse(robot.isMoving());
         }
     }
-
 }
