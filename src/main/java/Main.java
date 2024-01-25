@@ -10,16 +10,11 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        // Creazione di una lista di robot
         List<Robot> robots = new ArrayList<>();
-
-        // Creazione di un'area infinita
         InfiniteSurface infiniteSurface = new InfiniteSurface();
-
-        // Creazione del simulatore utilizzando il costruttore specificato
         SimulatorImpl simulator = new SimulatorImpl(robots, infiniteSurface);
 
-        // Esecuzione della simulazione dello scenario 1
+        // Esecuzione della simulazione dello scenario 1(Esempio 1)
         System.out.println("Simulazione Scenario 1:");
         SimulationScenario1.addCustomCommandsForScenario1(simulator);
         simulator.simulate(0.1, 1.0);
@@ -28,7 +23,7 @@ public class Main {
         // Pulizia dei robot e dell'area prima di eseguire la seconda simulazione
         simulator.clear();
 
-        // Esecuzione della simulazione dello scenario 2
+        // Esecuzione della simulazione dello scenario 2(Esempio 2)
         System.out.println("\nSimulazione Scenario 2:");
         SimulationScenario2.addCustomCommandsForScenario2(simulator);
         simulator.simulate(0.1, 1.0);

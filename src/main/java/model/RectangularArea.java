@@ -5,117 +5,49 @@ package model;
  * larghezza e altezza.
  */
 public class RectangularArea implements Area {
+    private final Coordinate coordinate;
+    private final String etichetta;
+    private final double altezza;
+    private final double larghezza;
 
-    private final double topLeftX;
-    private final double topLeftY;
-    private final double width;
-    private final double height;
-
-    /**
-     * Costruttore per RectangularArea.
-     *
-     * @param topLeftX La coordinata x del vertice in alto a sinistra.
-     * @param topLeftY La coordinata y del vertice in alto a sinistra.
-     * @param width    La larghezza dell'area rettangolare (deve essere positiva).
-     * @param height   L'altezza dell'area rettangolare (deve essere positiva).
-     * @throws IllegalArgumentException Se larghezza o altezza non sono positive.
-     */
-    public RectangularArea(double topLeftX, double topLeftY, double width, double height) {
-        if (width <= 0 || height <= 0) {
-            throw new IllegalArgumentException("Larghezza e altezza devono essere entrambe positive.");
-        }
-
-        this.topLeftX = topLeftX;
-        this.topLeftY = topLeftY;
-        this.width = width;
-        this.height = height;
+    public RectangularArea(double[] args,String etichetta){
+        this.coordinate=new Coordinate(args[0],args[1]);
+        this.etichetta=etichetta;
+        this.altezza=args[1];
+        this.larghezza=args[2];
     }
 
-    /**
-     * Verifica se un punto con le coordinate specificate appartiene all'area rettangolare.
-     *
-     * @param x La coordinata x del punto.
-     * @param y La coordinata y del punto.
-     * @return True se il punto appartiene all'area rettangolare, altrimenti False.
-     */
+    public RectangularArea(ShapeData area) {
+        this(area.args(), area.label());
+    }
+
     @Override
-    public boolean contains(double x, double y) {
-        return x >= topLeftX && x <= topLeftX + width && y >= topLeftY && y <= topLeftY + height;
+    public Coordinate getCoordinate() {
+        return this.coordinate;
     }
 
-    /**
-     * Restituisce il valore massimo della coordinata x dell'area rettangolare.
-     *
-     * @return Il valore massimo della coordinata x.
-     */
     @Override
-    public double getMaxX() {
-        return topLeftX + width;
+    public String getEtichetta() {
+        return this.etichetta;
     }
 
-    /**
-     * Restituisce il valore minimo della coordinata x dell'area rettangolare.
-     *
-     * @return Il valore minimo della coordinata x.
-     */
     @Override
-    public double getMinX() {
-        return topLeftX;
+    public boolean areaChecker(Coordinate coordinateRobot) {
+        double angoloDxBassoX = coordinate.getX() + larghezza / 2;
+        double angoloDxBassoY = coordinate.getY() - altezza / 2;
+        double angoloSxAltoX = coordinate.getX() - larghezza / 2;
+        double angoloSxAltoY = coordinate.getY() + altezza / 2;
+        return angoloSxAltoX <= coordinateRobot.getX() && coordinateRobot.getX()
+                <= angoloDxBassoX && angoloDxBassoY
+                <= coordinateRobot.getY() && coordinateRobot.getY()
+                <= angoloSxAltoY;
     }
 
-    /**
-     * Restituisce il valore massimo della coordinata y dell'area rettangolare.
-     *
-     * @return Il valore massimo della coordinata y.
-     */
-    @Override
-    public double getMaxY() {
-        return topLeftY + height;
+    public double getAltezza(){
+        return this.altezza;
     }
 
-    /**
-     * Restituisce il valore minimo della coordinata y dell'area rettangolare.
-     *
-     * @return Il valore minimo della coordinata y.
-     */
-    @Override
-    public double getMinY() {
-        return topLeftY;
-    }
-
-    /**
-     * Restituisce la coordinata x del vertice in alto a sinistra dell'area rettangolare.
-     *
-     * @return La coordinata x del vertice in alto a sinistra.
-     */
-    public double getTopLeftX() {
-        return topLeftX;
-    }
-
-    /**
-     * Restituisce la coordinata y del vertice in alto a sinistra dell'area rettangolare.
-     *
-     * @return La coordinata y del vertice in alto a sinistra.
-     */
-    public double getTopLeftY() {
-        return topLeftY;
-    }
-
-    /**
-     * Restituisce la larghezza dell'area rettangolare.
-     *
-     * @return La larghezza dell'area rettangolare.
-     */
-    public double getWidth() {
-        return width;
-    }
-
-    /**
-     * Restituisce l'altezza dell'area rettangolare.
-     *
-     * @return L'altezza dell'area rettangolare.
-     */
-    public double getHeight() {
-        return height;
+    public double getLarghezza(){
+        return this.larghezza;
     }
 }

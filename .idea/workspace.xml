@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/InfiniteSurface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Coordinate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/CoordinateInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/CoordinateRobot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/RobotInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/LinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ShapeDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ShapeDataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Area.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/InfiniteSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/InfiniteSurface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulatorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ShapeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ShapeData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ControllerRobotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerRobotTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DefaultInteractionHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DefaultInteractionHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ShapeDataHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ShapeDataHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SimulatorImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SimulatorImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -45,19 +54,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/39327/Desktop/Università/P.A/progettoPA23_sciame_di_robot-main/progettoPA23_sciame_di_robot-main",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/39327/Desktop/Università/P.A/progettoPA23_sciame_di_robot-main/progettoPA23_sciame_di_robot-main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\39327\IdeaProjects\RobotSimulation\src\test\java" />
@@ -273,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704993212103</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="aggiustamenti vari">
+      <created>1705600751420</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705600751420</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -312,6 +328,7 @@
     <MESSAGE value="gestione simulatore e aggiunta classi" />
     <MESSAGE value="inserimento javadoc" />
     <MESSAGE value="classi test" />
-    <option name="LAST_COMMIT_MESSAGE" value="classi test" />
+    <MESSAGE value="aggiustamenti vari" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiustamenti vari" />
   </component>
 </project>
