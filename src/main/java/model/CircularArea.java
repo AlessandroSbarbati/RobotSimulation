@@ -9,10 +9,10 @@ public class CircularArea implements Area {
     private final double raggio;
 
 
-    public CircularArea(double[] args,String etichetta){
-        this.coordinate=new Coordinate(args[0],args[1]);
+    public CircularArea(double[] coord,String etichetta){
+        this.coordinate=new Coordinate(coord[0],coord[1]);
         this.etichetta=etichetta;
-        this.raggio=args[2];
+        this.raggio=coord[2];
     }
     public CircularArea(ShapeData area) {
         this(area.args(), area.label());

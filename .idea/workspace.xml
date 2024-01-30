@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBaseInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoopInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/DoCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBaseInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoopInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoopInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CircularArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/CoordinateInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CoordinateInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/CoordinateRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CoordinateRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/InfiniteSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/InfiniteSurface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/RectangularArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Robot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706202793289</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="modifiche gestione comandi">
+      <created>1706285058514</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1706285058514</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -324,6 +340,7 @@
     <MESSAGE value="classi test" />
     <MESSAGE value="aggiustamenti vari" />
     <MESSAGE value="modifiche gestione spazio e aree" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifiche gestione spazio e aree" />
+    <MESSAGE value="modifiche gestione comandi" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifiche gestione comandi" />
   </component>
 </project>

@@ -1,24 +1,26 @@
 package controller;
 
 import model.Area;
+import model.CoordinateRobot;
 import model.Robot;
+import model.RobotInterface;
 import simulator.SimulatorImpl;
 import utils.RobotCommand;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 /**
  * ControllerRobot gestisce le azioni e il comportamento del robot all'interno della simulazione.
  */
 public class ControllerRobot implements InterfaceControllerRobot {
 
+    private HashMap<RobotInterface,ArrayList<RobotCommand>> mappaComandiRobot;
     private final Robot robot;
     private Area robotArea;
     private final SimulatorImpl simulator;
 
-    private final DefaultInteractionHandler interactionHandler;
 
-    private List<RobotCommand> listCommands;
     /**
      * Costruttore per ControllerRobot.
      *
@@ -30,37 +32,35 @@ public class ControllerRobot implements InterfaceControllerRobot {
         this.robot = robot;
         this.robotArea=robotArea;
         this.simulator=simulator;
-        this.interactionHandler = new DefaultInteractionHandler();
-        this.listCommands = new ArrayList<>();
+        this.mappaComandiRobot=new HashMap<>();
     }
-    /**
-     * Esegue un comando specificato con argomenti e un'etichetta associata.
-     *
-     * @param command Il comando da eseguire.
-     * @param args    Gli argomenti associati al comando.
-     * @param label   L'etichetta associata al comando.
-     */
-    @Override
-    public void executeCommand(RobotCommand command, double[] args, String label) {
-        switch (command) {
-            case MOVE -> move(args);
-            case MOVERANDOM -> moveRandom(args);
-            case SIGNAL -> signal(label);
-            case UNSIGNAL -> unsignal(label);
-            case FOLLOW -> follow(label, args);
-            case STOP -> stop();
-            case CONTINUE -> continueCommand((int) args[0], args);
-            case REPEAT -> {
-                setListCommand(listCommands);
-                repeatCommand((int) args[0]);
-            }
-            case UNTIL -> until(label);
-            case FOREVER -> doForever();
-            case DONE -> done();
+
+
+    public void addCommand(Robot robot, RobotCommand command) {
+        /*switch (command) {
+            case MOVE -> new ComandiRobotBase().move(coord);
+            case MOVERANDOM -> new ComandiRobotBase().moveRandom(coord);
+            case SIGNAL -> new ComandiRobotBase().signal(etichetta);
+            case UNSIGNAL -> new ComandiRobotBase().unsignal(etichetta);
+            case FOLLOW -> new ComandiRobotBase().follow();
+            case STOP -> new ComandiRobotBase().stop();
+            case CONTINUE -> new ComandiRobotBase().continueCommand();
+            case REPEAT -> new ComandiRobotLoop().repeatCommand();
+            case UNTIL -> new ComandiRobotLoop().until();
+            case FOREVER -> new ComandiRobotLoop().doForever();
+            case DONE -> new ComandiRobotBase().done();
             default ->
                 // Gestione del caso in cui il comando non è riconosciuto
                     System.out.println("Comando non riconosciuto: " + command);
-        }
+        }*/
+        ArrayList<RobotCommand> app = new ArrayList<>();
+        if (this.mappaComandiRobot.containsKey(robot)) app = this.mappaComandiRobot.get(robot);
+        app.add(command);
+        this.mappaComandiRobot.put(robot, app);
+    }
+
+    public void executeCommand(){
+
     }
     /**
      * Muove il robot verso una posizione specificata.

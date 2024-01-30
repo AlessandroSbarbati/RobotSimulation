@@ -10,8 +10,14 @@ public class Robot implements RobotInterface{
     private final ArrayList<String> condizioni;
     private CoordinateRobot coordinate;
 
-    public Robot() {
+    public Robot(CoordinateRobot coordinate) {
         this.condizioni = new ArrayList<>();
+        this.coordinate=coordinate;
+    }
+
+    public Robot(double x, double y, double velocita){
+        this.condizioni= new ArrayList<>();
+        this.coordinate=new CoordinateRobot(x,y,velocita);
     }
 
     /**

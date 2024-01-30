@@ -2,12 +2,12 @@ package controller;
 
 public class ComandiRobotLoop implements ComandiRobotLoopInterface{
     @Override
-    public void repeatCommand(int iterazioni) {
+    public void repeatCommand() {
 
     }
 
     @Override
-    public void until(String etichetta) {
+    public void until() {
 
     }
 

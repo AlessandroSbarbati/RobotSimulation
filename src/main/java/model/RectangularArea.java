@@ -10,11 +10,11 @@ public class RectangularArea implements Area {
     private final double altezza;
     private final double larghezza;
 
-    public RectangularArea(double[] args,String etichetta){
-        this.coordinate=new Coordinate(args[0],args[1]);
+    public RectangularArea(double[] coord, String etichetta){
+        this.coordinate=new Coordinate(coord[0], coord[1]);
         this.etichetta=etichetta;
-        this.altezza=args[1];
-        this.larghezza=args[2];
+        this.altezza= coord[1];
+        this.larghezza= coord[2];
     }
 
     public RectangularArea(ShapeData area) {
