@@ -34,8 +34,8 @@ public class Robot implements RobotInterface{
      *
      * @param condizioneRimossa La condizione da rimuovere dal robot.
      */
-    public void removeCondition(String condizioneRimossa) {
-        condizioni.remove(condizioneRimossa);
+    public boolean removeCondition(String condizioneRimossa) {
+        return condizioni.remove(condizioneRimossa);
     }
 
     /**
@@ -52,7 +52,8 @@ public class Robot implements RobotInterface{
         return coordinate;
     }
 
-    public void setCoordinate(double x, double y, double velocita) {
+    public CoordinateRobot setCoordinate(double x, double y, double velocita) {
         coordinate = new CoordinateRobot(x, y, velocita);
+        return this.coordinate;
     }
 }

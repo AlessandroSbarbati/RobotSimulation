@@ -1,9 +1,14 @@
 package controller;
 
+import model.Coordinate;
 import model.CoordinateRobot;
 import model.Robot;
+import model.RobotInterface;
 import utils.RobotCommand;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public interface DoCommand {
-    public void doCommand(Robot robot, RobotCommand command, CoordinateRobot coord, String etichetta);
+    public void doCommand(HashMap<RobotInterface, ArrayList<RobotCommand>>mappa, Robot robot, RobotCommand command, CoordinateRobot coord, Coordinate coordArrivo, String etichetta,int s);
 }
