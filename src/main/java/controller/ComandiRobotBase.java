@@ -7,7 +7,7 @@ import model.RobotInterface;
 import utils.RobotCommand;
 
 import java.util.*;
-import java.util.stream.Stream;
+
 
 public class ComandiRobotBase implements DoCommand {
 
@@ -124,9 +124,6 @@ public class ComandiRobotBase implements DoCommand {
         }
         return mappa;
     }
-    private void done() {
-
-    }
 
     @Override
     public void doCommand(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, CoordinateRobot coord, Coordinate coordArrivo, String etichetta,int s) {
@@ -138,7 +135,6 @@ public class ComandiRobotBase implements DoCommand {
             case STOP -> stop(mappa);
             case FOLLOW -> follow(mappa,etichetta);
             case CONTINUE -> continueCommand(s,mappa,coord,coordArrivo);
-            case DONE -> done();
             default ->System.out.println("Comando non riconosciuto: " + command);
         }
     }

@@ -28,7 +28,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
      * @param robotArea L'area in cui il robot può muoversi.
      * @param simulator Il simulatore che gestisce la simulazione.
      */
-    public ControllerRobot(Robot robot, Area robotArea, SimulatorImpl simulator) {
+    public ControllerRobot() {
         this.robot = robot;
         this.robotArea=robotArea;
         this.simulator=simulator;
@@ -59,7 +59,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
         this.mappaComandiRobot.put(robot, app);
     }
 
-    public void executeCommand(){
+    public void executeCommand(RobotInterface robot, ArrayList<RobotCommand> comandi){
 
     }
     /**
