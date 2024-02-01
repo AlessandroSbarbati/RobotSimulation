@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/DoCommandLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoopInterface.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DoCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DefaultInteractionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DoCommandLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DoCommandLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InteractionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/AreaChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/AreaChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/DefaultAreaChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/DefaultAreaChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706702830052</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="comandi loop">
+      <created>1706787364265</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1706787364265</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -350,6 +359,7 @@
     <MESSAGE value="modifiche gestione comandi" />
     <MESSAGE value="modifiche gestione comandi base" />
     <MESSAGE value="comandi base" />
-    <option name="LAST_COMMIT_MESSAGE" value="comandi base" />
+    <MESSAGE value="comandi loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="comandi loop" />
   </component>
 </project>

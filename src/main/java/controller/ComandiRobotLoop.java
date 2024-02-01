@@ -1,7 +1,6 @@
 package controller;
 
-import model.Robot;
-import model.RobotInterface;
+import model.*;
 import utils.RobotCommand;
 
 import java.util.ArrayList;
@@ -22,13 +21,27 @@ public class ComandiRobotLoop implements DoCommandLoop{
         done();
     }
 
-    private void until() {
+    private void until(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa, ShapeData shape) {
+        for (HashMap.Entry<RobotInterface, ArrayList<RobotCommand>> entry : mappa.entrySet()) {
+            RobotInterface robot = entry.getKey();
+            ArrayList<RobotCommand> comandi = entry.getValue();
+            ControllerRobot controllerRobot=new ControllerRobot();
+            Area rectangularArea = new RectangularArea(shape);
+            Area circularArea = new CircularArea(shape);
+            while (rectangularArea.areaChecker(robot.getCoordinate())) {
+                controllerRobot.executeCommand(robot,comandi);
+            }
+            while(circularArea.areaChecker(robot.getCoordinate())){
+                controllerRobot.executeCommand(robot,comandi);
 
+            }
+            done();
+        }
     }
 
     private void doForever(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,boolean flag) {
         flag=true;
-        while(flag==true){
+        while(flag){
             for (HashMap.Entry<RobotInterface, ArrayList<RobotCommand>> entry : mappa.entrySet()) {
                 RobotInterface robot = entry.getKey();
                 ArrayList<RobotCommand> comandi = entry.getValue();
@@ -44,10 +57,10 @@ public class ComandiRobotLoop implements DoCommandLoop{
     }
 
     @Override
-    public void doCommandLoop(RobotCommand command, int n, HashMap<RobotInterface, ArrayList<RobotCommand>> mappa, Robot robot,boolean flag) {
+    public void doCommandLoop(RobotCommand command, int n, HashMap<RobotInterface, ArrayList<RobotCommand>> mappa, Robot robot,boolean flag,ShapeData shape) {
        switch (command){
            case REPEAT -> repeatCommand(n,mappa);
-           case UNTIL -> until();
+           case UNTIL -> until(mappa,shape);
            case FOREVER -> doForever(mappa,flag);
            case DONE -> done();
            default ->System.out.println("Comando non riconosciuto: " + command);

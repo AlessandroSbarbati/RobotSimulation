@@ -1,43 +1,35 @@
 package controller;
 
-import model.Area;
-import model.CoordinateRobot;
 import model.Robot;
 import model.RobotInterface;
-import simulator.SimulatorImpl;
 import utils.RobotCommand;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 /**
  * ControllerRobot gestisce le azioni e il comportamento del robot all'interno della simulazione.
  */
 public class ControllerRobot implements InterfaceControllerRobot {
 
-    private HashMap<RobotInterface,ArrayList<RobotCommand>> mappaComandiRobot;
-    private final Robot robot;
-    private Area robotArea;
-    private final SimulatorImpl simulator;
+    private final HashMap<RobotInterface,ArrayList<RobotCommand>> mappaComandiRobot;
 
-
-    /**
-     * Costruttore per ControllerRobot.
-     *
-     * @param robot     Il robot controllato dal controller.
-     * @param robotArea L'area in cui il robot può muoversi.
-     * @param simulator Il simulatore che gestisce la simulazione.
-     */
     public ControllerRobot() {
-        this.robot = robot;
-        this.robotArea=robotArea;
-        this.simulator=simulator;
         this.mappaComandiRobot=new HashMap<>();
     }
 
 
     public void addCommand(Robot robot, RobotCommand command) {
-        /*switch (command) {
+
+        ArrayList<RobotCommand> app = new ArrayList<>();
+        if (this.mappaComandiRobot.containsKey(robot)) app = this.mappaComandiRobot.get(robot);
+        app.add(command);
+        this.mappaComandiRobot.put(robot, app);
+    }
+
+    public void executeCommand(RobotInterface robot, ArrayList<RobotCommand> comandi){
+
+    }
+/*    switch (command) {
             case MOVE -> new ComandiRobotBase().move(coord);
             case MOVERANDOM -> new ComandiRobotBase().moveRandom(coord);
             case SIGNAL -> new ComandiRobotBase().signal(etichetta);
@@ -52,22 +44,9 @@ public class ControllerRobot implements InterfaceControllerRobot {
             default ->
                 // Gestione del caso in cui il comando non è riconosciuto
                     System.out.println("Comando non riconosciuto: " + command);
-        }*/
-        ArrayList<RobotCommand> app = new ArrayList<>();
-        if (this.mappaComandiRobot.containsKey(robot)) app = this.mappaComandiRobot.get(robot);
-        app.add(command);
-        this.mappaComandiRobot.put(robot, app);
-    }
+        }
+         @Override
 
-    public void executeCommand(RobotInterface robot, ArrayList<RobotCommand> comandi){
-
-    }
-    /**
-     * Muove il robot verso una posizione specificata.
-     *
-     * @param args Gli argomenti che specificano la posizione e la velocità del movimento.
-     */
-    @Override
     public void move(double[] args) {
         double x = args[0];
         double y = args[1];
@@ -92,11 +71,6 @@ public class ControllerRobot implements InterfaceControllerRobot {
             System.out.println("La posizione specificata non è contenuta nell'Area del robot.");
         }
     }
-    /**
-     * Muove il robot in modo casuale all'interno di un'area specificata.
-     *
-     * @param args Gli argomenti che specificano l'area e la velocità del movimento casuale.
-     */
     @Override
     public void moveRandom(double[] args) {
         double x1 = args[0];
@@ -129,34 +103,17 @@ public class ControllerRobot implements InterfaceControllerRobot {
         }
     }
 
-    /**
-     * Aggiunge una condizione al robot indicando una segnalazione con un'etichetta specificata.
-     *
-     * @param label L'etichetta della segnalazione da aggiungere come condizione al robot.
-     */
     @Override
     public void signal(String label) {
         robot.addCondition(label);
         System.out.println("Segnalazione: " + label);
     }
-    /**
-     * Rimuove una condizione dal robot indicando il termine di una segnalazione con un'etichetta specificata.
-     *
-     * @param label L'etichetta della segnalazione da rimuovere come condizione dal robot.
-     */
     @Override
     public void unsignal(String label) {
         robot.removeCondition(label);
         System.out.println("Terminata segnalazione: " + label);
     }
 
-    /**
-     * Avvia la modalità "follow", facendo muovere il robot verso le posizioni degli altri robot
-     * che segnalano la stessa condizione, oppure in una direzione casuale se nessun altro robot è presente.
-     *
-     * @param label L'etichetta della condizione da seguire.
-     * @param args  Gli argomenti, con il passo di movimento specificato.
-     */
     @Override
     public void follow(String label, double[] args) {
         System.out.println("Segue il robot con etichetta " + label);
@@ -214,10 +171,6 @@ public class ControllerRobot implements InterfaceControllerRobot {
         robot.setFollowing(false);
     }
 
-    /**
-     * Interrompe il movimento del robot, aggiungendo la condizione "Stopped".
-     * Stampa un messaggio indicando che il movimento è stato interrotto.
-     */
     @Override
     public void stop() {
         robot.stopMoving();
@@ -225,14 +178,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
         System.out.println("Movimento interrotto");
     }
 
-    /**
-     * Continua il movimento del robot per un periodo specificato in secondi.
-     * Stampa un messaggio indicando che il movimento continua per il periodo specificato.
-     * Durante il periodo di continuazione, esegue il movimento utilizzando gli argomenti forniti.
-     *
-     * @param seconds   Il numero di secondi per cui il movimento deve continuare.
-     * @param moveArgs  Gli argomenti da utilizzare per il movimento.
-     */
+
     @Override
     public void continueCommand(long seconds, double[] moveArgs) {
         System.out.println("Movimento continua per " + seconds + " secondi");
@@ -246,12 +192,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
         System.out.println("Fine del movimento continuo.");
     }
 
-    /**
-     * Ripete una sequenza di comandi per un numero specificato di iterazioni.
-     * Stampa un messaggio indicando l'inizio di ogni iterazione.
-     *
-     * @param iterations Il numero di iterazioni da eseguire.
-     */
+
     @Override
     public void repeatCommand(int iterations) {
         if (listCommands != null) {
@@ -272,21 +213,13 @@ public class ControllerRobot implements InterfaceControllerRobot {
             System.out.println("Attenzione: La lista di comandi ripetuti non è stata impostata.");
         }
     }
-    /**
-     * Imposta la lista dei comandi che devono essere ripetuti.
-     *
-     * @param command La lista dei comandi da impostare per la ripetizione.
-     */
+
     @Override
     public void setListCommand(List<RobotCommand> command) {
         this.listCommands = command;
     }
 
-    /**
-     * Ripete una sequenza di comandi fino a quando una certa condizione è percepita nell'ambiente (ossia il robot è all'interno di un'area con la label richiesta).
-     *
-     * @param label L'etichetta della condizione da attendere.
-     */
+
     @Override
     public void until(String label) {
         if (listCommands != null) {
@@ -308,9 +241,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
     }
 
 
-    /**
-     * Ripete un comportamento per sempre.
-     */
+
     @Override
     public void doForever() {
         if (listCommands != null) {
@@ -333,9 +264,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
     }
 
 
-    /**
-     * Segnala la fine della sequenza di comandi.
-     */
+
     @Override
     public void done() {
         System.out.println("Fine della sequenza di comandi");
@@ -356,13 +285,7 @@ public class ControllerRobot implements InterfaceControllerRobot {
         return robot;
     }
 
-    /**
-     * Simula il movimento del robot verso una destinazione specifica nel tempo specificato.
-     *
-     * @param targetX La coordinata x della destinazione.
-     * @param targetY La coordinata y della destinazione.
-     * @param time    Il tempo in cui completare il movimento.
-     */
+
     public void simulateMovement(double targetX, double targetY, double time) {
         // Calcola la quantità di spostamento richiesta per ogni passo
         double deltaX = (targetX - robot.getX()) / time;
@@ -386,14 +309,9 @@ public class ControllerRobot implements InterfaceControllerRobot {
             }
         }
     }
-    /**
-     * Gestisce l'interazione tra il robot e un'area specificata.
-     *
-     * @param robot Il robot coinvolto nell'interazione.
-     * @param area  L'area con cui il robot interagisce.
-     */
+
     public void handleInteraction(Robot robot, Area area) {
         interactionHandler.handleInteraction(robot, area);  // Delegato al gestore di interazione
     }
-
+*/
 }
