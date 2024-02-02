@@ -24,12 +24,18 @@ public class ControllerRobot implements InterfaceControllerRobot {
         if (this.mappaComandiRobot.containsKey(robot)) app = this.mappaComandiRobot.get(robot);
         app.add(command);
         this.mappaComandiRobot.put(robot, app);
-    }
-
-    public void executeCommand(RobotInterface robot, ArrayList<RobotCommand> comandi){
 
     }
-/*    switch (command) {
+
+    public void executeCommandLoop(RobotInterface robot, ArrayList<RobotCommand> comandi){
+
+    }
+
+    @Override
+    public void executeCommand() {
+
+    }
+    /*    switch (command) {
             case MOVE -> new ComandiRobotBase().move(coord);
             case MOVERANDOM -> new ComandiRobotBase().moveRandom(coord);
             case SIGNAL -> new ComandiRobotBase().signal(etichetta);

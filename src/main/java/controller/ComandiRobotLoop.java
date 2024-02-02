@@ -14,7 +14,7 @@ public class ComandiRobotLoop implements DoCommandLoop{
                 RobotInterface robot = entry.getKey();
                 ArrayList<RobotCommand> comandi = entry.getValue();
                 ControllerRobot controllerRobot=new ControllerRobot();
-                controllerRobot.executeCommand(robot,comandi);
+                controllerRobot.executeCommandLoop(robot,comandi);
                 cont++;
             }
         }
@@ -29,14 +29,14 @@ public class ComandiRobotLoop implements DoCommandLoop{
             Area rectangularArea = new RectangularArea(shape);
             Area circularArea = new CircularArea(shape);
             while (rectangularArea.areaChecker(robot.getCoordinate())) {
-                controllerRobot.executeCommand(robot,comandi);
+                controllerRobot.executeCommandLoop(robot,comandi);
             }
             while(circularArea.areaChecker(robot.getCoordinate())){
-                controllerRobot.executeCommand(robot,comandi);
+                controllerRobot.executeCommandLoop(robot,comandi);
 
             }
-            done();
         }
+        done();
     }
 
     private void doForever(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,boolean flag) {
@@ -46,7 +46,7 @@ public class ComandiRobotLoop implements DoCommandLoop{
                 RobotInterface robot = entry.getKey();
                 ArrayList<RobotCommand> comandi = entry.getValue();
                 ControllerRobot controllerRobot = new ControllerRobot();
-                controllerRobot.executeCommand(robot, comandi);
+                controllerRobot.executeCommandLoop(robot, comandi);
             }
         }
         flag=false;

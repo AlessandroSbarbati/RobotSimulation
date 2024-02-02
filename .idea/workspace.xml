@@ -8,12 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DefaultInteractionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DoCommandLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DoCommandLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InteractionHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InterfaceControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/AreaChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/AreaChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/DefaultAreaChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/DefaultAreaChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706787364265</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="comandi loop e delete classi non utilizzate">
+      <created>1706810216914</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1706810216914</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -360,6 +362,7 @@
     <MESSAGE value="modifiche gestione comandi base" />
     <MESSAGE value="comandi base" />
     <MESSAGE value="comandi loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="comandi loop" />
+    <MESSAGE value="comandi loop e delete classi non utilizzate" />
+    <option name="LAST_COMMIT_MESSAGE" value="comandi loop e delete classi non utilizzate" />
   </component>
 </project>

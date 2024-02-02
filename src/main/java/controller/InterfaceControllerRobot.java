@@ -14,5 +14,6 @@ public interface InterfaceControllerRobot {
     public void addCommand(Robot robot, RobotCommand command);
 
 
-    public void executeCommand(RobotInterface robot, ArrayList<RobotCommand> comandi);
+    public void executeCommandLoop(RobotInterface robot, ArrayList<RobotCommand> comandi);
+    public void executeCommand();
 }
