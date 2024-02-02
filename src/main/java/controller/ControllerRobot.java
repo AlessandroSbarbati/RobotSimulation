@@ -1,7 +1,6 @@
 package controller;
 
-import model.Robot;
-import model.RobotInterface;
+import model.*;
 import utils.RobotCommand;
 
 import java.util.ArrayList;
@@ -12,9 +11,14 @@ import java.util.HashMap;
 public class ControllerRobot implements InterfaceControllerRobot {
 
     private final HashMap<RobotInterface,ArrayList<RobotCommand>> mappaComandiRobot;
+    private final ComandiRobotLoop loop;
+    private final ComandiRobotBase base;
 
-    public ControllerRobot() {
+
+    public ControllerRobot(ComandiRobotBase base,ComandiRobotLoop loop) {
         this.mappaComandiRobot=new HashMap<>();
+        this.base=base;
+        this.loop=loop;
     }
 
 
@@ -27,13 +31,15 @@ public class ControllerRobot implements InterfaceControllerRobot {
 
     }
 
-    public void executeCommandLoop(RobotInterface robot, ArrayList<RobotCommand> comandi){
-
+    public void executeCommandLoop(Robot robot, RobotCommand command, int n,boolean flag, ShapeData shape){
+        addCommand(robot,command);
+        loop.doCommandLoop(command,n,mappaComandiRobot,robot,flag,shape);
     }
 
-    @Override
-    public void executeCommand() {
 
+    public void executeCommand(Robot robot, RobotCommand command, CoordinateRobot coord, Coordinate coordArrivo, String etichetta, int s) {
+        addCommand(robot, command);
+        base.doCommand(mappaComandiRobot,robot,command,coord,coordArrivo,etichetta,s);
     }
     /*    switch (command) {
             case MOVE -> new ComandiRobotBase().move(coord);

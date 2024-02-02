@@ -107,7 +107,7 @@ public class ComandiRobotBase implements DoCommand {
         for (cont = 0 ;cont <s;cont++) {
             app=ritornaRobotMove(app, coord, coordArrivo);
             try {
-                Thread.sleep(1000); // 1000 millisecondi = 1 secondo
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
