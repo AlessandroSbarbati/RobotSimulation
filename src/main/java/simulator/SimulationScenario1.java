@@ -1,4 +1,4 @@
-package simulator;
+/*package simulator;
 
 import controller.ControllerRobot;
 import model.CircularArea;
@@ -21,3 +21,4 @@ public class SimulationScenario1 {
         }
     }
 }
+*/

@@ -35,4 +35,7 @@ public enum RobotCommand {
         return Stream.of(RobotCommand.values()).filter(c -> c.isCommandOfLine(line)).findFirst();
     }
 
+    public boolean isLoopCommand() {
+        return this == RobotCommand.REPEAT || this == RobotCommand.UNTIL || this == RobotCommand.FOREVER || this == RobotCommand.DONE;
+    }
 }

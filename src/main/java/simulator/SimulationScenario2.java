@@ -1,4 +1,4 @@
-package simulator;
+/*package simulator;
 
 import controller.ControllerRobot;
 import model.InfiniteSurface;
@@ -26,4 +26,4 @@ public class SimulationScenario2{
         }
     }
 
-}
+}*/

@@ -11,6 +11,6 @@ import java.util.HashMap;
  * Questa interfaccia serve per dare una struttura alla classe ComandiRobotLoop
  */
 public interface DoCommandLoop {
-    public void doCommandLoop(RobotCommand command, int n, HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,
+    public void doCommandLoop(RobotCommand command, int n, HashMap<Robot, ArrayList<RobotCommand>> mappa,
                               Robot robot, boolean flag, ShapeData shape);
 }

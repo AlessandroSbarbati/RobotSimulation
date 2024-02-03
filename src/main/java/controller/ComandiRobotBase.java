@@ -19,7 +19,7 @@ public class ComandiRobotBase implements DoCommand {
      * @param mappa mappa dove vengono salvati tutti i robot.
      * @return mappa aggiornata a seconda della move del robot.
      */
-    private HashMap<RobotInterface, ArrayList<RobotCommand>> move(CoordinateRobot coord, Coordinate coordArrivo,HashMap<RobotInterface, ArrayList<RobotCommand>> mappa) {
+    public HashMap<Robot, ArrayList<RobotCommand>> move(CoordinateRobot coord, Coordinate coordArrivo, HashMap<Robot, ArrayList<RobotCommand>> mappa) {
     ArrayList<Double> incrementi = this.calcoloIncremento(coord,coordArrivo);
     if(coord.getX()<= coordArrivo.getX()&&coord.getY()<=coordArrivo.getY()){
         return aggiornaMappa(mappa,new CoordinateRobot(coord.getX()+incrementi.get(0), coord.getY()+incrementi.get(1),coord.getVelocita()),coord) ;
@@ -39,7 +39,7 @@ public class ComandiRobotBase implements DoCommand {
      * @param coordArrivo coordinate di arrivo del robot.
      * @return coordinate nuove per la move.
      */
-    private ArrayList<Double> calcoloIncremento(CoordinateRobot coord, Coordinate coordArrivo){
+    public ArrayList<Double> calcoloIncremento(CoordinateRobot coord, Coordinate coordArrivo){
         ArrayList<Double> result = new ArrayList<>(2);
         double direzione=Math.sqrt(Math.pow(coordArrivo.getX(),2)+Math.pow(coordArrivo.getY(),2));
         result.add((coordArrivo.getX()/direzione)* coord.getVelocita());
@@ -55,7 +55,7 @@ public class ComandiRobotBase implements DoCommand {
      * @param coordArrivo coordinate di arrivo del robot (secondo elemento dell'intervallo).
      * @return mappa aggiornata a seconda della move del robot.
      */
-    private HashMap<RobotInterface, ArrayList<RobotCommand>> moveRandom(HashMap<RobotInterface, ArrayList<RobotCommand>>mappa,CoordinateRobot coord, Coordinate coordArrivo) {
+    public HashMap<Robot, ArrayList<RobotCommand>> moveRandom(HashMap<Robot, ArrayList<RobotCommand>> mappa, CoordinateRobot coord, Coordinate coordArrivo) {
         Coordinate coordCasuali = new Coordinate(generateRandomValue(coord.getX(), coordArrivo.getX()), generateRandomValue(coord.getY(), coordArrivo.getY()));
         return this.move(coord,coordCasuali,mappa);
     }
@@ -77,7 +77,7 @@ public class ComandiRobotBase implements DoCommand {
      * @param etichetta condizione da segnalare.
      * @return robot con una nuova etichetta.
      */
-    private Robot signal(Robot robot,String etichetta) {
+    public Robot signal(Robot robot, String etichetta) {
         if (this.validLabel(etichetta)) {
             robot.addCondition(etichetta);
             System.out.println("Segnalazione: " + etichetta);
@@ -90,7 +90,7 @@ public class ComandiRobotBase implements DoCommand {
      * @param etichetta etichetta da controllare.
      * @return false se l'etichetta non è valida, true altrimenti.
      */
-    private boolean validLabel(String etichetta){
+    public boolean validLabel(String etichetta){
         for (int i = 0 ; i < etichetta.length();i++){
             if (etichetta.charAt(i)<'0' || etichetta.charAt(i)>'9'|| etichetta.charAt(i)<'a' || etichetta.charAt(i)>'z'
             || etichetta.charAt(i)<'A' || etichetta.charAt(i)>'Z' || etichetta.charAt(i)!='_'  ) return false;
@@ -104,7 +104,7 @@ public class ComandiRobotBase implements DoCommand {
      * @param etichetta la condizione da rimuovere.
      * @return robot con l'etichetta rimossa.
      */
-    private Robot unsignal(Robot robot,String etichetta) {
+    public Robot unsignal(Robot robot, String etichetta) {
         if (robot.removeCondition(etichetta)){
             System.out.println("Terminata segnalazione: " + etichetta);
             return robot;
@@ -116,8 +116,8 @@ public class ComandiRobotBase implements DoCommand {
      * @param mappa mappa dove vengono salvati i robot.
      * @return mappa aggiornata con tutti i robot fermi.
      */
-    private HashMap<RobotInterface, ArrayList<RobotCommand>> stop(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa) {
-        for (RobotInterface robot : mappa.keySet()) robot.getCoordinate().setVelocita(0);
+    public HashMap<Robot, ArrayList<RobotCommand>> stop(HashMap<Robot, ArrayList<RobotCommand>> mappa) {
+        for (Robot robot : mappa.keySet()) robot.getCoordinate().setVelocita(0);
         return mappa;
     }
 
@@ -127,19 +127,19 @@ public class ComandiRobotBase implements DoCommand {
      * @param etichetta condizione da controllare per poter far muovere i robot.
      * @return mappa aggiornata.
      */
-    private HashMap<RobotInterface, ArrayList<RobotCommand>> follow(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,String etichetta) {
+    public HashMap<Robot, ArrayList<RobotCommand>> follow(HashMap<Robot, ArrayList<RobotCommand>> mappa, String etichetta) {
         double xMedia=0;
         double yMedia=0;
         int cont=0;
-        List<RobotInterface> listApp = mappa.keySet().stream().filter(e->e.hasCondition(etichetta)).toList();
-        for (RobotInterface robot : listApp){
+        List<Robot> listApp = mappa.keySet().stream().filter(e->e.hasCondition(etichetta)).toList();
+        for (Robot robot : listApp){
                 xMedia=+robot.getCoordinate().getX();
                 yMedia=+robot.getCoordinate().getY();
                 cont++;
         }
         xMedia=xMedia/cont;
         yMedia=yMedia/cont;
-        for (RobotInterface robot:listApp) {
+        for (Robot robot:listApp) {
             this.move(robot.getCoordinate(),new Coordinate(xMedia,yMedia),mappa);
         }
         return mappa;
@@ -152,16 +152,16 @@ public class ComandiRobotBase implements DoCommand {
      * @param coordVecchie coordinate vecchie dei robot.
      * @return mappa aggiornata.
      */
-    private HashMap<RobotInterface, ArrayList<RobotCommand>> aggiornaMappa(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,CoordinateRobot coord, CoordinateRobot coordVecchie){
-        RobotInterface app= new Robot(0,0,0);
+    public HashMap<Robot, ArrayList<RobotCommand>> aggiornaMappa(HashMap<Robot, ArrayList<RobotCommand>> mappa, CoordinateRobot coord, CoordinateRobot coordVecchie){
+        Robot app= new Robot(0,0,0);
         ArrayList<RobotCommand> appoggio=new ArrayList<>();
-        for (RobotInterface robot: mappa.keySet()){
+        for (Robot robot: mappa.keySet()){
             if(robot.getCoordinate().equals(coordVecchie)){
                app=robot;
                appoggio=mappa.get(app);
             }
         }
-        RobotInterface newRobot = new Robot(coord.getX(), coord.getY(),coord.getVelocita());
+        Robot newRobot = new Robot(coord.getX(), coord.getY(),coord.getVelocita());
        mappa.remove(app);
        mappa.put(newRobot,appoggio);
         return mappa;
@@ -175,9 +175,9 @@ public class ComandiRobotBase implements DoCommand {
      * @param coordArrivo coordinate di arrivo dei robot.
      * @return mappa aggiornata.
      */
-    private HashMap<RobotInterface, ArrayList<RobotCommand>> continueCommand(int s,HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,CoordinateRobot coord, Coordinate coordArrivo) {
+    public HashMap<Robot, ArrayList<RobotCommand>> continueCommand(int s, HashMap<Robot, ArrayList<RobotCommand>> mappa, CoordinateRobot coord, Coordinate coordArrivo) {
         int cont=0;
-        HashMap<RobotInterface, ArrayList<RobotCommand>> app=mappa;
+        HashMap<Robot, ArrayList<RobotCommand>> app=mappa;
         for (cont = 0 ;cont <s;cont++) {
             app=ritornaRobotMove(app, coord, coordArrivo);
             try {
@@ -196,8 +196,8 @@ public class ComandiRobotBase implements DoCommand {
      * @param coordArrivo coordinate di arrivo dei robot.
      * @return mappa aggiornata.
      */
-    private HashMap<RobotInterface, ArrayList<RobotCommand>> ritornaRobotMove(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,CoordinateRobot coord, Coordinate coordArrivo){
-        for (RobotInterface robot: mappa.keySet()){
+    public HashMap<Robot, ArrayList<RobotCommand>> ritornaRobotMove(HashMap<Robot, ArrayList<RobotCommand>> mappa, CoordinateRobot coord, Coordinate coordArrivo){
+        for (Robot robot: mappa.keySet()){
             for (RobotCommand comandi: mappa.get(robot)){
                 comandi.equals("MOVE");
                 move(coord,coordArrivo,mappa);
@@ -207,7 +207,7 @@ public class ComandiRobotBase implements DoCommand {
     }
 
     /**
-     * Questo metodo è l'unico pubblico della classe perché serve per richiamare tutti gli altri ed eseguirli.
+     * Questo metodo serve per richiamare tutti gli altri metodi ed eseguirli.
      * @param mappa mappa dove vengono salvati i robot.
      * @param robot robot.
      * @param command comandi dei robot.
@@ -217,7 +217,7 @@ public class ComandiRobotBase implements DoCommand {
      * @param s secondi.
      */
     @Override
-    public void doCommand(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, CoordinateRobot coord, Coordinate coordArrivo, String etichetta,int s) {
+    public void doCommand(HashMap<Robot, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, CoordinateRobot coord, Coordinate coordArrivo, String etichetta,int s) {
         switch (command){
             case MOVE -> move(coord,coordArrivo,mappa);
             case MOVERANDOM -> moveRandom(mappa,coord,coordArrivo);

@@ -16,10 +16,10 @@ public class ComandiRobotLoop implements DoCommandLoop{
      * @param command comandi dei robot.
      * @param n numero di volte.
      */
-    private void repeatCommand(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, int n,boolean flag, ShapeData shape) {
+    private void repeatCommand(HashMap<Robot, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, int n,boolean flag, ShapeData shape) {
 
         for (int cont=0;cont<n;cont++){
-            for (RobotInterface robots: mappa.keySet()){
+            for (Robot robots: mappa.keySet()){
                 for (ArrayList<RobotCommand> comandi: mappa.values()){
                     ControllerRobot controllerRobot=new ControllerRobot();
                     controllerRobot.executeCommandLoop(robot,command,n,flag,shape);
@@ -37,8 +37,8 @@ public class ComandiRobotLoop implements DoCommandLoop{
      * @param command comandi dei robot.
      * @param shape area circolare o rettangolare.
      */
-    private void until(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, int n,boolean flag, ShapeData shape) {
-        for (RobotInterface robots: mappa.keySet()){
+    private void until(HashMap<Robot, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, int n,boolean flag, ShapeData shape) {
+        for (Robot robots: mappa.keySet()){
             for (ArrayList<RobotCommand> comandi: mappa.values()){
                 ControllerRobot controllerRobot=new ControllerRobot();
                 Area rectangularArea = new RectangularArea(shape);
@@ -64,10 +64,10 @@ public class ComandiRobotLoop implements DoCommandLoop{
      * @param command comandi dei robot.
      * @param flag boolean per creare un ciclo infinito.
      */
-    private void doForever(HashMap<RobotInterface, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, int n,boolean flag, ShapeData shape) {
+    private void doForever(HashMap<Robot, ArrayList<RobotCommand>> mappa,Robot robot, RobotCommand command, int n,boolean flag, ShapeData shape) {
         flag=true;
         while(flag){
-           for (RobotInterface robots: mappa.keySet()){
+           for (Robot robots: mappa.keySet()){
                for (ArrayList<RobotCommand> comandi: mappa.values()){
                    ControllerRobot controllerRobot = new ControllerRobot();
                    controllerRobot.executeCommandLoop(robot,command,n,flag,shape);
@@ -86,7 +86,7 @@ public class ComandiRobotLoop implements DoCommandLoop{
     }
 
     /**
-     * Questo metodo è l'unico pubblico della classe perché serve per richiamare tutti gli altri ed eseguirli.
+     * Questo metodo serve per richiamare tutti gli altri metodi ed eseguirli.
      * @param command comandi dei robot.
      * @param n numero di volte per il metodo REPEAT.
      * @param mappa mappa dove vengono salvare i robot.
@@ -95,7 +95,7 @@ public class ComandiRobotLoop implements DoCommandLoop{
      * @param shape area per il metodo UNTIL.
      */
     @Override
-    public void doCommandLoop(RobotCommand command, int n, HashMap<RobotInterface, ArrayList<RobotCommand>> mappa, Robot robot,boolean flag,ShapeData shape) {
+    public void doCommandLoop(RobotCommand command, int n, HashMap<Robot, ArrayList<RobotCommand>> mappa, Robot robot,boolean flag,ShapeData shape) {
        switch (command){
            case REPEAT -> repeatCommand(mappa,robot,command,n,flag,shape);
            case UNTIL -> until(mappa,robot,command,n,flag,shape);

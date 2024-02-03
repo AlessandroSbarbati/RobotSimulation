@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class ControllerRobot implements ControllerInterface {
 
-    private final HashMap<RobotInterface,ArrayList<RobotCommand>> mappaComandiRobot;
+    private final HashMap<Robot,ArrayList<RobotCommand>> mappaComandiRobot;
     private final ComandiRobotLoop loop;
     private final ComandiRobotBase base;
 
@@ -59,5 +59,8 @@ public class ControllerRobot implements ControllerInterface {
     public void executeCommand(Robot robot, RobotCommand command, CoordinateRobot coord, Coordinate coordArrivo, String etichetta, int s) {
         addCommand(robot, command);
         base.doCommand(mappaComandiRobot,robot,command,coord,coordArrivo,etichetta,s);
+    }
+    public HashMap<Robot, ArrayList<RobotCommand>> getMappaComandiRobot() {
+        return mappaComandiRobot;
     }
 }
