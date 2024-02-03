@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Questa interfaccia definisce una struttura per i robot.
+ */
 public interface RobotInterface {
     public void addCondition(String newCondizione);
     public boolean removeCondition(String condizioneRimossa);

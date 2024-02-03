@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Questa classe implementa l'interfaccia CoordinateInterface e serve per definire coordinate generali.
+ */
 public class Coordinate implements CoordinateInterface {
     private final double x;
     private final double y;

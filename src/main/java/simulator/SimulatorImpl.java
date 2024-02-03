@@ -8,7 +8,7 @@ import utils.RobotCommand;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimulatorImpl implements Simulator {
+public class SimulatorImpl  {
 
     private final List<Robot> robots;
     private final InfiniteSurface infiniteSurface;

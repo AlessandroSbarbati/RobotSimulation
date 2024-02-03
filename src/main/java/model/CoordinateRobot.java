@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Questa classe estende Coordinate e definisce le coordinate dei robot e la sua velocità.
+ */
 public class CoordinateRobot extends Coordinate{
     private double velocita;
 

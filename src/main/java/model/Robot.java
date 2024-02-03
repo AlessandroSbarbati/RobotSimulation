@@ -3,8 +3,7 @@ package model;
 import java.util.ArrayList;
 
 /**
- * La classe Robot rappresenta un robot all'interno del sistema. Ogni robot ha una posizione (x, y),
- * una velocità, condizioni correnti, e può trovarsi in uno stato di movimento o fermo.
+ * La classe Robot rappresenta un robot all'interno del sistema.
  */
 public class Robot implements RobotInterface{
     private final ArrayList<String> condizioni;

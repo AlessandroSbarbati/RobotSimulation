@@ -12,9 +12,6 @@ public class InfiniteSurface<R extends RobotInterface,A extends Area> {
     private final ArrayList<A> containedAreas;
     private HashMap<R, Coordinate> containedRobots;
 
-    /**
-     * Costruttore per InfiniteSurface.
-     */
     public InfiniteSurface(ArrayList<A> aree, HashMap<R, Coordinate> robots) {
         this.containedAreas = aree;
         this.containedRobots = robots;
