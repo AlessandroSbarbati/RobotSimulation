@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * La classe InfiniteSurface rappresenta un'area piana di dimensioni illimitate che può contenere forme circolari e rettangolari.
  */
-public class InfiniteSurface<R extends RobotInterface,A extends Area> {
+public class InfiniteSurface<R extends RobotInterface,A extends Area> implements Surface {
 
     private final ArrayList<A> containedAreas;
-    private HashMap<R, Coordinate> containedRobots;
+    private final HashMap<R, Coordinate> containedRobots;
 
     public InfiniteSurface(ArrayList<A> aree, HashMap<R, Coordinate> robots) {
         this.containedAreas = aree;
@@ -25,7 +25,7 @@ public class InfiniteSurface<R extends RobotInterface,A extends Area> {
         return containedRobots;
     }
 
-    public Coordinate getCoordinateRobot(R robot){
+    public Coordinate getCoordinateRobot(RobotInterface robot){
         return this.containedRobots.get(robot);
     }
 

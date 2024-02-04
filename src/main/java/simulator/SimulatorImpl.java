@@ -2,25 +2,34 @@ package simulator;
 
 import controller.ControllerRobot;
 import model.Coordinate;
+import model.InfiniteSurface;
 import model.Robot;
-import model.RobotInterface;
 import model.ShapeData;
 import utils.RobotCommand;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/**
+ * Implementazione della simulazione che utilizza un controller per gestire i robot.
+ */
 public class SimulatorImpl implements Simulator {
 
     private final ControllerRobot controllerRobot;
     private boolean isSimulationRunning;
+    private InfiniteSurface infiniteSurface;
 
 
-    public SimulatorImpl(ControllerRobot controllerRobot) {
+    public SimulatorImpl(ControllerRobot controllerRobot, InfiniteSurface infiniteSurface) {
         this.controllerRobot = controllerRobot;
         this.isSimulationRunning = false;
+        this.infiniteSurface = infiniteSurface;
     }
-
+    /**
+     * Avvia la simulazione eseguendo i comandi dei robot per un certo periodo di tempo.
+     *
+     * @param dt   L'intervallo di tempo tra due iterazioni della simulazione.
+     * @param time La durata totale della simulazione.
+     */
     @Override
     public void simulate(double dt, double time) {
         double currentTime = 0;
@@ -28,7 +37,6 @@ public class SimulatorImpl implements Simulator {
         while (currentTime < time) {
             HashMap<Robot, ArrayList<RobotCommand>> mappaComandiRobot = controllerRobot.getMappaComandiRobot();
 
-            // La tua logica per eseguire i comandi e aggiornare lo stato del sistema va qui
             for (Robot robot : mappaComandiRobot.keySet()) {
                 ArrayList<RobotCommand> comandi = mappaComandiRobot.get(robot);
                 for (RobotCommand comando : comandi) {
@@ -38,12 +46,11 @@ public class SimulatorImpl implements Simulator {
                         controllerRobot.executeCommandLoop(robot, comando, 3, true, shape);
                     } else {
                         // Esegui il comando base
-                        controllerRobot.executeCommand(robot, comando, robot.getCoordinate(), new Coordinate(10, 10), "example_condition", 5);
+                        controllerRobot.executeCommand(robot, comando, robot.getCoordinate(), new Coordinate(10, 10), "Condizione", 5);
                     }
                 }
             }
 
-            // Incrementa il tempo passando al passo temporale successivo
             currentTime += dt;
 
             try {

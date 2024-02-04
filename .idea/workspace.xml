@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="647dba8d-a03c-4d24-a2e1-49f2d1bb7ed0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/MainEsempio2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Surface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ComandiRobotLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControllerRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DoCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DoCommandLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DoCommandLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainEsempio1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/InfiniteSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/InfiniteSurface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulationScenario2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simulator/SimulatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simulator/SimulatorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/RobotCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/RobotCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerRobotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerRobotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DefaultInteractionHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ComandiRobotBaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ShapeDataHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RobotTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SimulatorImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aree" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -365,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706980573053</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="modifica classe SimulatorImpl">
+      <created>1706985833342</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706985833342</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -413,6 +414,7 @@
     <MESSAGE value="comandi loop e delete classi non utilizzate" />
     <MESSAGE value="metodi executeCommand" />
     <MESSAGE value="javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="javadoc" />
+    <MESSAGE value="modifica classe SimulatorImpl" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifica classe SimulatorImpl" />
   </component>
 </project>
